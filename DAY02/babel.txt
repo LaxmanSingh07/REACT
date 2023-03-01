@@ -1,0 +1,16 @@
+babel.rc is a configuration for the babel 
+
+
+
+//react reconciliation-React ---> please read it 
+//the diffing algorithm 
+
+//render ---> updating somthing in the DOM
+
+//if you don't use the key then the react will render everything 
+//rerender ----> changing the whole DOM tree 
+
+
+//id is differnet from the key 
+
+//you should never have same key for two 
