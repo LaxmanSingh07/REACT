@@ -1,0 +1,6 @@
+//if the different attribute of the same types
+//with the same parent 
+//it we introudce some new div then it will rerender everyting 
+
+
+//if we introudce something key then it is unique
