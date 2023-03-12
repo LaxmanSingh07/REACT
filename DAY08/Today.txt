@@ -1,0 +1,44 @@
+what ? 
+
+useEffect () 
+and useState()
+
+//how to create the custom hook 
+
+//how to buil our own hook when why ?
+
+why should we even build our own hook 
+
+sepration of concern
+++
+
+
+when we you are creating a hook use camel casing and use "use " in front of file 
+
+
+we generally do name export with the helper component and default with the 
+
+window online event in js 
+
+
+everytime a new eventListnerWillCreated or not 
+
+always a good practice to clear our eventListner when you go out of the component
+
+there is an issue if we bundle our entire project code inside a bundle it reduce the perforemance of cde very less
+
+
+seprate them into logical bundle 
+
+
+chunking 
+code splittling?
+dynamic Bunlding
+lazy loading
+on Demand loading
+
+
+
+System design interview it 
+
+never dynamically laod compoent inside other compoent

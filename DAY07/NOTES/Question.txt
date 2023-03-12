@@ -1,0 +1,61 @@
+why do we use super in js 
+
+how setState work behind the seen 
+
+
+//first of all constructor is called then render 
+
+
+what is componentDidMount
+
+
+first of all constructor then render then componentDidMount is called 
+
+what are the differencet lifecycles method inside react 
+
+
+
+
+
+there are two phases render phase and commit phase
+
+in render phase constructor and render are called 
+
+in commit phase componentDidMount
+
+
+render phase for all of the component will be called 
+
+
+
+//when we use useEffect then we can't function to async
+
+
+why can we make componentDidMount async but callback not async 
+
+
+//never ever react lifecycles method to the functional component
+
+mount update and unmount these are threee different things 
+
+what is SPA
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+research
+
+super(props)
+
+async can't use inside useEffect why?

@@ -1,0 +1,3 @@
+you can't make any class base component wihout render method 
+
+//render method return some 

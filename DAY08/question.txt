@@ -1,0 +1,16 @@
+who many times componentDidMount ----> is called 
+componentDidUpdate ------> it will call when we update something 
+
+
+
+who are 
+what is batching 
+
+
+what is componenetWillUnmout is used for  
+
+creat a hook for getRestaurants
+
+create hook to use the local storge 
+
+
