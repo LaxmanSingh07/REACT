@@ -7,7 +7,7 @@
 // what would you need to put in this tag
 
 
-// React Developer wants that we should write html and css in js it selft
+// React Developer wants that we should write html and css in js itself
 
 
 
@@ -41,7 +41,7 @@ const container=React.createElement("div",{
 
 // this tells react that what is the root element inside my app 
 
-//most react app have only have one root and render 
+//most react app have only one root
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 // now I want to put my heading inside the root 
