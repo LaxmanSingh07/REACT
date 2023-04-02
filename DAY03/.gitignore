@@ -1,1 +1,4 @@
 node_modules
+.parcle-cache
+dest
+package-lock.json
