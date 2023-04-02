@@ -1,12 +1,10 @@
 ## What is props in React?
 
-Props is short for properties. Props are used to pass data from one component to another. Props are passed to components via HTML attributes.
+`Props` is `short for properties`. Props are used to `pass data` from one component to another. Props are passed to components via `HTML attributes`.
 
-props are similar to function arguments in JavaScript and attributes in HTML.
+`props are similar to function arguments` in JavaScript and attributes in HTML.
 
-props are immutable. Once they are passed to a component, they cannot be changed by that component.
-
-example:
+`**example**`:
 
 ```js
 
@@ -18,14 +16,14 @@ const App = () => {
     )
 }
 
-Here App is a parent component and RestrauntCard is a child component.
+Here `App` is a `parent` `component` and RestrauntCard is a child component.
 restaurant is a prop which is passed to RestrauntCard component from App component.
 
 ```
 
-## Object Destructuring
+## **Object Destructuring**
 
-Object destructuring is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.
+Object `destructuring` is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.
 
 ```js
 const person = {
