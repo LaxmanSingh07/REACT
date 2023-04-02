@@ -4,7 +4,7 @@
 
 `props are similar to function arguments` in JavaScript and attributes in HTML.
 
-`**example**`:
+**`example`**:
 
 ```js
 
