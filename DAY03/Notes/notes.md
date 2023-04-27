@@ -107,6 +107,25 @@ const config = [
 
 Optional chaining is a new feature in JavaScript that allows you to access nested objects without having to check if the parent object exists. This is useful when you are working with data that may not be available.
 
-Example: 
+Example:
 
 ```jsx
+
+const person = {
+  name: "John",
+  age: 36,
+  address: {
+    city: "New York",
+    state: "NY",
+  },
+};
+
+const city = person.address?.city;
+
+console.log(city);
+
+```
+
+## Artical Link
+
+[https://www.freecodecamp.org/news/what-is-optional-chaining-in-javascript/](https://www.freecodecamp.org/news/what-is-optional-chaining-in-javascript/)
