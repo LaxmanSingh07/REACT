@@ -5,14 +5,15 @@ Virtual DOM is a concept where a virtual representation of the DOM is kept in me
 
 ## What is reconciliation?
 
-(https://reactjs.org/docs/reconciliation.html)
+
+[Reconcilation](https://reactjs.org/docs/reconciliation.html)
 
 It is an algorithm that takes two trees of React elements and generates the minimal set of operations to transform one tree into the other.
 
 
 ### Diff Algorithm
 
-(https://reactjs.org/docs/reconciliation.html#the-diffing-algorithm)
+[Diff-Alog](https://reactjs.org/docs/reconciliation.html#the-diffing-algorithm)
 
 
 Reconciliation is the process of updating the DOM to match the desired output. When the virtual DOM is updated, React needs to compare the previous version of the DOM with the new version. This is called reconciliation.
@@ -24,6 +25,7 @@ When you call ReactDOM.render() in a React app, the rendered element is kept in 
 **NOTE** : if there are 4 divs in the in a component but there is no keys assigned to them ... if you insert or change in some div then react will re-render all the 4 divs
 
 ### why we don't use index as a key?
+
 Negative impact of using index as a key is that if the order of items in the list changes, the key will also change. This will cause React to re-render all the items in the list, which is inefficient.
 
 //no key << index key ()<< unique key  (Best Practice)
@@ -50,5 +52,5 @@ Reconciliation Engine.
 
 ## React Fiber Architecture
 
-(https://reactjs.org/docs/codebase-overview.html#react-fiber-architecture)
+[Architecture](https://reactjs.org/docs/codebase-overview.html#react-fiber-architecture)
 
