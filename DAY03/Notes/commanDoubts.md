@@ -18,3 +18,9 @@ No, you can use React without JSX. But JSX makes it easier to write React code.
 
 No, you can use React without ES6. But ES6 makes it easier to write React code.
 
+#### Can we use React.fragment inside React.fragment?
+
+Yes, we can use React.fragment inside React.fragment.
+
+
+

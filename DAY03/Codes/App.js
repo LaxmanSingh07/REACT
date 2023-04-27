@@ -33,38 +33,7 @@ const HeadComponent = () => {
 
 
 
-//Config Driven UI ---> it is a good pratice we follow
-// const config = [
-//     {
-//         type: "carousel",
-//         card: [
-//             {
-//                 offerName: "50% off"
-//             },
-//             {
-//                 offerName: "No Delivery Charge"
-//             }
-//         ]
-//     },
-//     {
-//         type: "resutaurants",
-//         card: [
-//             {
-//                 name: "Burger King",
-//                 Image: "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/0bf19a82b109b40c2f5c56d00f071a33",
-//                 cusines: ["Burger", "American"],
-//                 rating: "4.2"
-//             },
-//             {
-//                 name: "KFC",
-//                 Image: "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/0bf19a82b109b40c2f5c56d00f071a33",
-//                 cusines: ["Burger", "American"],
-//                 rating: "4.2"
-//             }
-//         ]
-//     }
 
-// ]
 
 const RestrauntList = [
     {
@@ -903,12 +872,12 @@ const RestrauntList = [
 
 
 // console.log(RestrauntList[0].data);
-const Subway = {
-    name: "Burger King",
-    Image: "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/0bf19a82b109b40c2f5c56d00f071a33",
-    cusines: ["Burger", "American"],
-    rating: "4.2"
-}
+// const Subway = {
+//     name: "Burger King",
+//     Image: "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/0bf19a82b109b40c2f5c56d00f071a33",
+//     cusines: ["Burger", "American"],
+//     rating: "4.2"
+// }
 
 
 //react wrapes up all these into a variable which is known as the props 
