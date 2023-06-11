@@ -16,5 +16,35 @@ Component As Building Block
     -  👉 Components can be reused,nested inside each other, and pass data between them 
 
 
+Component 
 
+ - Data
+ - Logic
+ - Apprearance
+## What is JSX
+
+-  👉 JSX is a syntax to describe what components should look like and how it work
+-  👉 Component must return a block of JSX
+-  👉 Extension of js that allows us to embed JavaScript, Css and React Component into Html
+-  👉 JSX is there but we could usee React without JSX
+### What is Babel 
+
+- Babel is a `transpiler` that converts `JSX into browser readable` JavaScript
+
+Babel is automatically installed when we install react
+
+
+
+
+### JSX IS DECLARATIVE
+
+Imperative (How to do things )
+
+- Manual DOM element selections and DOM traversing
+-  Step by Step Dom manipulation until we reach the desired result
+
+
+### Declarative (What to do)
+
+- Describe what Ui should look like using JSX, based on current data 
 
