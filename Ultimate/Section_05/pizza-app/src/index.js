@@ -49,10 +49,9 @@ const pizzaData = [
 function App() {
   return (
     <div>
-      <h1>Hello React!</h1>
-      <Pizza />
-      <Pizza />
-      <Pizza />
+      <Header />
+      <Menu />
+      <Footer />
     </div>
   );
 }
@@ -60,17 +59,39 @@ function App() {
 // function name should be in PascalCase
 
 function Pizza() {
-  return (<div>
-    {/* It wil automatically add the public/ */}
-  <img src="pizzas/spinaci.jpg" alt="Pizzaphoto"></img>
-  <h2>Pizza</h2>
+  return (
+    <div>
+      {/* It wil automatically add the public/ */}
+      <img src="pizzas/spinaci.jpg" alt="Pizzaphoto"></img>
+      <h2>Pizza</h2>
 
-    <p>Tomato, mozarella, spinach and ricotta Cheese</p>
-
-  </div>
-
+      <p>Tomato, mozarella, spinach and ricotta Cheese</p>
+    </div>
   );
 }
+
+function Header() {
+  return <h1>Fast React Pizza co.</h1>;
+}
+
+function Menu() {
+  return (
+    <>
+      <h2>Menu</h2>
+      <Pizza />
+      <Pizza />
+      <Pizza />
+    </>
+  );
+}
+function Footer() {
+  //   return React.createElement("footer", null, "We're currently open!");
+  return (
+    <footer>{new Date().toLocaleTimeString()} We're currently open!</footer>
+  );
+}
+
+const Test = () => {};
 
 // each component returns a single element
 
