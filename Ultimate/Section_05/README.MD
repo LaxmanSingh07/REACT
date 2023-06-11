@@ -48,3 +48,6 @@ Imperative (How to do things )
 
 - Describe what Ui should look like using JSX, based on current data 
 
+
+
+In Strict mode our component will be rendered twice
