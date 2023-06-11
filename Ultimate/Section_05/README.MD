@@ -51,3 +51,35 @@ Imperative (How to do things )
 
 
 In Strict mode our component will be rendered twice
+
+
+## Sepration of Concerns 
+
+  -  👉 `Sepration of concerns` is a design principle for separating a computer program into distinct sections, such that each section addresses a separate concern
+  
+previously i was using one technology in one file 
+
+But at current I am using One Component in one file
+
+
+```
+                 SEPARATION OF CONCERNS?
+                 ONE COMPONENT PER FILE
+
+                 Rise of
+                 interactive
+                 SPAs
+
+                 JavaScript is in
+                 charge of HTML
+
+                 Logic and UI are
+                 tightly coupled
+
+                 Why keep them
+                 separated?
+
+                 React
+                 Components + JSX
+
+```
