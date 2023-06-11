@@ -41,7 +41,7 @@ Babel is automatically installed when we install react
 Imperative (How to do things )
 
 - Manual DOM element selections and DOM traversing
--  Step by Step Dom manipulation until we reach the desired result
+-  Step by Step Dom manipulation until we reach the desired UI
 
 
 ### Declarative (What to do)
