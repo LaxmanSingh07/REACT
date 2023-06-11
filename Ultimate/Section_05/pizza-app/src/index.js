@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
 
 const pizzaData = [
   {
@@ -48,7 +49,8 @@ const pizzaData = [
 
 function App() {
   return (
-    <div>
+    //we are not using class because it is already a keyword in JS
+    <div className="container">
       <Header />
       <Menu />
       <Footer />
@@ -63,42 +65,48 @@ function Pizza() {
     <div>
       {/* It wil automatically add the public/ */}
       <img src="pizzas/spinaci.jpg" alt="Pizzaphoto"></img>
-      <h2>Pizza</h2>
-
+      <h3>Pizza Spinaci</h3>
       <p>Tomato, mozarella, spinach and ricotta Cheese</p>
     </div>
   );
 }
 
 function Header() {
-  return <h1>Fast React Pizza co.</h1>;
+  //   const style = { color: "red", fontSize: "32px", textTransform: "uppercase" };
+  //   return <h1 style={style}>Fast React Pizza co.</h1>;
+  const style = {};
+  return (
+    <header className="header">
+      <h1 style={style}>Fast React Pizza co.</h1>
+    </header>
+  );
 }
 
 function Menu() {
   return (
-    <>
-      <h2>Menu</h2>
+    <main className="menu">
+      <h2>Our Menu</h2>
       <Pizza />
       <Pizza />
       <Pizza />
-    </>
+    </main>
   );
 }
 function Footer() {
   //   return React.createElement("footer", null, "We're currently open!");
-    const hour=new Date().getHours();
-    const openHour=8;
-    const closeHour=20;
-    const isOpen=hour>=openHour && hour<=closeHour;
-    console.log(isOpen);
+  const hour = new Date().getHours();
+  const openHour = 8;
+  const closeHour = 20;
+  const isOpen = hour >= openHour && hour <= closeHour;
+  console.log(isOpen);
 
-    // if(hour >=openHour && hour <=closeHour)
-    // {
-    //     alert("We're currently open!");
-    // }
-    // else{
-    //     alert("We're currently closed!");
-    // }
+  // if(hour >=openHour && hour <=closeHour)
+  // {
+  //     alert("We're currently open!");
+  // }
+  // else{
+  //     alert("We're currently closed!");
+  // }
   return (
     <footer>{new Date().toLocaleTimeString()} We're currently open!</footer>
   );
