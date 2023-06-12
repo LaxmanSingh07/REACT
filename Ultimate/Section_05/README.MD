@@ -138,3 +138,8 @@ General Rules
 ## Differnce between jsx and html
 
 
+
+
+
+
+`Each items in a React Key should be unique`

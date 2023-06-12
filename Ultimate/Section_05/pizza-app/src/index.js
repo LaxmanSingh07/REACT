@@ -62,15 +62,15 @@ function App() {
 
 function Pizza(props) {
   return (
-    <div className="pizza">
+    <li className="pizza">
       {/* It wil automatically add the public/ */}
-      <img src={props.imgName} alt="Pizzaphoto"></img>
+      <img src={props.photoName} alt="Pizzaphoto"></img>
       <div>
         <h3>{props.name}</h3>
         <p>{props.ingredients}</p>
         <span>{props.price}</span>
       </div>
-    </div>
+    </li>
   );
 }
 
@@ -89,18 +89,11 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      <Pizza
-        name="Pizza Spinaci"
-        ingredients="Tomato, mozarella, spinach and ricotta Cheese"
-        imgName="pizzas/spinaci.jpg"
-        price={12}
-      />
-      <Pizza
-        name="Pizza Salamino"
-        ingredients="Tomato, mozarella, and pepperoni"
-        price={15}
-        imgName="pizzas/salamino.jpg"
-      />
+      <ul className="pizzas">
+        {pizzaData.map((pizza) => (
+          <Pizza {...pizza} key={pizza.name}/>
+        ))}
+      </ul>
     </main>
   );
 }
