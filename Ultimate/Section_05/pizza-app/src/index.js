@@ -62,13 +62,15 @@ function App() {
 
 function Pizza(props) {
   return (
-    <li className="pizza">
+    <li className={`pizza ${props.soldOut ?'sold-out':""}`}>
       {/* It wil automatically add the public/ */}
       <img src={props.photoName} alt="Pizzaphoto"></img>
       <div>
         <h3>{props.name}</h3>
         <p>{props.ingredients}</p>
-        <span>{props.price}</span>
+
+        {/* {props.soldOut ? <span>SOLD OUT</span> : <span>{props.price}</span>} */}
+        <span>{props.soldOut ? 'SOLD OUT':props.price}</span>
       </div>
     </li>
   );
