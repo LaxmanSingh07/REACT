@@ -142,4 +142,13 @@ General Rules
 
 
 
+
+
 `Each items in a React Key should be unique`
+
+
+
+
+## Conditional Rendering 
+
+- 👉 Conditional rendering is the process of conditionally rendering a part of the page instead of always showing the same thing
