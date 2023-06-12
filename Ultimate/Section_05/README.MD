@@ -84,7 +84,40 @@ But at current I am using One Component in one file
 
 ```
 
-## What is props 
+## Reviewing Props
 
--  👉 Props are a way of passing data from parent component to child component
--  
+- 👉 Props are used to pass data from parent components to child components (down the component tree)
+- 👉 Essential too to config and customize components components (like function parameters)
+- 👉 with props, parent components `control` how child components look and work 
+- 👉Anything can `pass` to props (functions,arrays,objects,JSX,etc)
+
+
+## `Props are Read only`
+
+
+Props are `read-only`, they are immutable! This is one of React's strict rules.
+
+If you need to mutate props, you actually need state 
+
+## Why props are immutable
+
+Mutating props would affect parent, creating `side effect` (not pure)
+Components have to be `pure` and `predictable`
+
+## What is One Way Data Flow
+
+- 👉 Data flows in one direction (from parent to child)
+
+`But other frameworks like Angular and Vue have two way data binding`
+
+##### Why one way data flow
+
+- 👉 One way data flow makes it easier to track changes
+- 👉 is more performant
+
+###### But what if I want to pass data from child to parent
+
+(clever solution) Check next section 
+
+
+
