@@ -119,5 +119,22 @@ Components have to be `pure` and `predictable`
 
 (clever solution) Check next section 
 
+## Rules of JSX 
+
+General Rules
+
+1. jsx works essentially like html, with some differences like `we can enter` `JavaScript mode` by using {} (for text or attributes)
+
+2. We can place JavaScript expressions inside JSX by using {}
+
+3. Statement are not allowed (if,else,for,while,switch etc)
+
+4. Jsx produces a JavaScript expression
+
+5. A piece of JSX can only have `one root element`. If you need more ,use <React.Fragment> (or the short <>)
+
+
+
+## Differnce between jsx and html
 
 
