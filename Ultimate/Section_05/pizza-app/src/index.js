@@ -94,11 +94,18 @@ function Menu() {
       <h2>Our Menu</h2>
 
       {numPizzas > 0 ? (
-        <ul className="pizzas">
-          {pizzas.map((pizza) => (
-            <Pizza {...pizza} key={pizza.name} />
-          ))}
-        </ul>
+        // react fragment is used to group elements without adding extra nodes to the DOM
+        <>
+          <p>
+            Authentic Italian cuisine. 6 ccreative dishes to choose from. All
+            from our stone oven, all organic, all delicous
+          </p>
+          <ul className="pizzas">
+            {pizzas.map((pizza) => (
+              <Pizza {...pizza} key={pizza.name} />
+            ))}
+          </ul>
+        </>
       ) : (
         <p>We're still working on our menu. Please come back later : </p>
       )}
@@ -128,19 +135,17 @@ function Footer() {
   );
 }
 
-function Order(props) {
+function Order({ closeHour, openHour }) {
   return (
     <div className="order">
       <p>
-        We're currently open! until {props.closeHour}:00. Come Visit us or order
+        We're currently open! until {closeHour}:00. Come Visit us or order
         online
       </p>
       <button className="btn">Order</button>
     </div>
   );
 }
-
-const Test = () => {};
 
 // each component returns a single element
 
