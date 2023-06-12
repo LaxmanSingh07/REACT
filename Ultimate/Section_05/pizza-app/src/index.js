@@ -60,13 +60,16 @@ function App() {
 
 // function name should be in PascalCase
 
-function Pizza() {
+function Pizza(props) {
   return (
-    <div>
+    <div className="pizza">
       {/* It wil automatically add the public/ */}
-      <img src="pizzas/spinaci.jpg" alt="Pizzaphoto"></img>
-      <h3>Pizza Spinaci</h3>
-      <p>Tomato, mozarella, spinach and ricotta Cheese</p>
+      <img src={props.imgName} alt="Pizzaphoto"></img>
+      <div>
+        <h3>{props.name}</h3>
+        <p>{props.ingredients}</p>
+        <span>{props.price}</span>
+      </div>
     </div>
   );
 }
@@ -86,9 +89,18 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      <Pizza />
-      <Pizza />
-      <Pizza />
+      <Pizza
+        name="Pizza Spinaci"
+        ingredients="Tomato, mozarella, spinach and ricotta Cheese"
+        imgName="pizzas/spinaci.jpg"
+        price={12}
+      />
+      <Pizza
+        name="Pizza Salamino"
+        ingredients="Tomato, mozarella, and pepperoni"
+        price={15}
+        imgName="pizzas/salamino.jpg"
+      />
     </main>
   );
 }

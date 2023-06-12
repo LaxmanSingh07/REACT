@@ -83,3 +83,8 @@ But at current I am using One Component in one file
                  Components + JSX
 
 ```
+
+## What is props 
+
+-  👉 Props are a way of passing data from parent component to child component
+-  
