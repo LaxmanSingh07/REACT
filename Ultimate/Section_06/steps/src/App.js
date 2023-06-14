@@ -8,15 +8,20 @@ const messages = [
 
 export default function App() {
   const [step, setStep] = useState(1); // it will return an array
-
+  const [test,setTest] = useState({ name: "Laxman" });
   function handlePrevious() {
-    if(step>=1)
-    setStep(step - 1);
+    if (step >= 1) setStep(step - 1);
   }
 
   function handleNext() {
-    if(step<3)
-    setStep(step + 1);
+    if (step < 3) setStep(step + 1);
+
+    //Bad practice
+    // test.name = "Laxman1";
+
+    //Good practice 
+    setTest({ name: " Laxman1" }); 
+
   }
   return (
     <div className="steps">
