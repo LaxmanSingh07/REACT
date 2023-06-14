@@ -9,6 +9,8 @@
 
 `Updating component` state triggers React to `re-render the component `
 
+
+
 ### State Allows Devlopers to: 
 
 `Update the component's view` (by re-rendering it )
@@ -25,3 +27,22 @@ It returns an array
 It is a hook 
 
 `All the function which starts with use` is Hook of the react 
+
+## The mecchanics of State in React
+
+
+- We  `don't` do direct DOM manipulation in React.
+  ( because React is a declarative library )
+
+
+- ? How is a component view updated then? 
+
+- In React, a view is updated by re-rendering the component. (`Important React Concept`)
+
+
+REACT CALLS THE COMPONENT FUNCTION AGAIN AND RE-RENDERS THE COMPONENT. (updated view)
+
+
+React is called `React` because it `reacts` to state changes.
+
+
