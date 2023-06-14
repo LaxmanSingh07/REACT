@@ -45,4 +45,4 @@ REACT CALLS THE COMPONENT FUNCTION AGAIN AND RE-RENDERS THE COMPONENT. (updated 
 
 React is called `React` because it `reacts` to state changes.
 
-
+`React Developer Tools` : A browser extension that allows us to inspect the React component hierarchy in the `Virtual DOM` as well as the `Real DOM`.
