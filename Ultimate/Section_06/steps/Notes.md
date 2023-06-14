@@ -16,3 +16,12 @@ Persist local variables between renders
 
 `State is a tool.` Mastering state will unlock the power of React Development. 
 
+
+
+## useState :
+
+It returns an array 
+
+It is a hook 
+
+`All the function which starts with use` is Hook of the react 

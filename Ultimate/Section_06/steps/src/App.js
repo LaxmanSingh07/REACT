@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 
 const messages = [
   "Learn React ⚛️",
@@ -6,15 +6,17 @@ const messages = [
   "Invest your new income 🤑",
 ];
 
-const App = () => {
-  const step = 1;
+export default function App() {
+  const [step, setStep] = useState(1); // it will return an array
 
   function handlePrevious() {
-    alert("Previous button clicked");
+    if(step>=1)
+    setStep(step - 1);
   }
 
   function handleNext() {
-    alert("Next button clicked");
+    if(step<3)
+    setStep(step + 1);
   }
   return (
     <div className="steps">
@@ -44,6 +46,4 @@ const App = () => {
       </div>
     </div>
   );
-};
-
-export default App;
+}
