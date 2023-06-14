@@ -12,12 +12,23 @@ export default function App() {
 
   const [isOpen, setIsOpen] = useState(true);
   function handlePrevious() {
-    if (step >= 1) setStep(step - 1);
+    if (step >= 1) setStep((s)=>s-1);
   }
 
   function handleNext() {
-    if (step < 3) setStep(step + 1);
+    if (step < 3) {
 
+      setStep((s)=>s+1); // it will work
+      // setStep((s)=>s+1); // it will work
+
+
+
+
+      // setStep(step + 1);
+
+      //It will increment the step by 1 only
+      // setStep(step + 1);
+    }
     //Bad practice
     // test.name = "Laxman1";
 
@@ -26,7 +37,7 @@ export default function App() {
   }
   return (
     <>
-      <button className="close" onClick={() => setIsOpen(!isOpen)}>&times;</button>
+      <button className="close" onClick={() => setIsOpen((is)=>!is)}>&times;</button>
       {isOpen && (
         <div className="steps">
           <div className="numbers">
