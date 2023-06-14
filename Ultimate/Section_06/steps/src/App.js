@@ -25,7 +25,7 @@ export default function App() {
     // setTest({ name: " Laxman1" });
   }
   return (
-    <div>
+    <>
       <button className="close" onClick={() => setIsOpen(!isOpen)}>&times;</button>
       {isOpen && (
         <div className="steps">
@@ -55,6 +55,6 @@ export default function App() {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
