@@ -99,3 +99,8 @@ of state a home
 
 `It is known as the ` **Child-to-Parent Communication** (inverse data flow) : `child updating parent's state`
 
+## Deriving State 
+
+
+**Derived State** : State that is computed from and existing piece of state or from props
+
