@@ -6,11 +6,25 @@ const initialItems = [
 ];
 
 export default function App() {
+  const [items,setItems]=useState([]);
+  function handleAddItem(item) {
+    //this is not allowed 
+    // items.push(item); //because in react all the state are immutable
+
+    setItems((prevItems)=>[...prevItems,item])
+    // console.log(items);
+  }
+
+  function handleDeleteItem(id)
+  {
+    setItems((prevItems)=>prevItems.filter((item)=>item.id!==id))
+  }
+
   return (
     <div className="app">
       <Logo />
-      <Form />
-      <PackingList />
+      <Form  onAddItems={handleAddItem}/>
+      <PackingList items={items} onDeleteItem={handleDeleteItem}/>
       <Stats />
     </div>
   );
@@ -18,9 +32,12 @@ export default function App() {
 function Logo() {
   return <h1>🌴Far away💼</h1>;
 }
-function Form() {
+function Form({onAddItems}) {
   const [desc, setDesc] = useState("Testing");
   const [quantity, setQuantity] = useState(1);
+  
+
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -30,6 +47,10 @@ function Form() {
     const newItem={desc,quantity,packed:false,id:Date.now()};
     // console.log(newItem);
 
+
+    onAddItems(newItem);
+    setDesc("");
+    setQuantity(1);
     
 
   }
@@ -60,24 +81,28 @@ function Form() {
     </form>
   );
 }
-function PackingList() {
+function PackingList({items,onDeleteItem}) {
   return (
     <div className="list">
       <ul>
-        {initialItems.map((item) => (
-          <Item item={item} key={item.id} />
+        {items.map((item) => (
+          <Item item={item} key={item.id} onDeleteItem={onDeleteItem}/>
         ))}
       </ul>
     </div>
   );
 }
-function Item({ item }) {
+function Item({ item ,onDeleteItem}) {
   return (
     <li>
       <span style={item.packed ? { textDecoration: "line-through" } : {}}>
         {item.quantity} {item.description}
       </span>
-      <button>❌</button>
+      <button
+        onClick={
+          ()=>onDeleteItem(item.id)
+        }
+      >❌</button>
     </li>
   );
 }
