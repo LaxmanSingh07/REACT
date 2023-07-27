@@ -37,4 +37,74 @@
 
 ## Prop Drilling
 
-    
+- 👉 Prop drilling is the process of passing props from one component to another component, and to another component, and so on, until it reaches its final destination component.
+
+
+## Component Composition
+
+### `Using` A Component 
+
+```jsx
+
+function Modal()
+{
+    return (
+        <div className="modal">
+            <Sucess/>
+        </div>
+    )
+}
+
+
+function Sucess()
+{
+    return (
+        <div className="sucess">
+            <h1>Success</h1>
+        </div>
+    )
+}
+
+```
+
+- Sucess is inside Modal:   We can't reuse Modal without Sucess
+- Want to Reuse ❌
+
+### Composition 
+
+```jsx
+
+function Modal({children})
+{
+    return (
+        <div className="modal">
+            {children}
+        </div>
+    )
+}
+
+function Sucess()
+{
+    return (
+        <div className="sucess">
+            <h1>Success</h1>
+        </div>
+    )
+}
+
+
+
+```
+👉 We can REUSE Modal ✅
+
+
+### Formal Definition 
+
+- 🤙 Component composition `Combining different components using the children props (or explicitly defined props)`
+
+### We component Composition , we Can: 
+
+- 👉 create highly reusable  and composition components
+- 👉 Fix prop drilling ( great for layouts )
+
+
