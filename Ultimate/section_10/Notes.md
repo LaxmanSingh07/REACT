@@ -108,3 +108,36 @@ function Sucess()
 - 👉 Fix prop drilling ( great for layouts )
 
 
+
+### Props As AN API
+
+
+#### Component Consumer 
+#### Computer Creator
+
+
+
+|Too Little Props | Too Many Props|
+|:-:|:-:|
+|👉 Not flexible enough | 👉 Too Hard to use |
+|might not be useful| 👉 Exposing too much compexity Hard-to-write code|
+
+
+
+
+`We need to find the right balance between too little and too many props, that works for both the consumer and the creator`
+
+
+## Prop Types 
+
+- 👉 Prop types are a way to document the intended types of properties passed to components
+
+- 👉 Prop types are not enforced, but they are useful for documentation and debugging
+
+- 👉 Prop types are defined as static properties of the component function
+
+- 👉 Prop types are defined using the prop-types package
+
+- 👉 Prop types are only available in development mode
+
+- 👉 Prop types are not available in production mode
