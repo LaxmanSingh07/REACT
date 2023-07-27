@@ -232,4 +232,3 @@ function WatchedMovieItem({ movie }) {
   )
 
 }
-
