@@ -6,57 +6,66 @@ const initialItems = [
 ];
 
 export default function App() {
-  const [items,setItems]=useState([]);
+  const [items, setItems] = useState([]);
+
+  //THERE IS NO NEED OF THIS BECAUSE IT WILL ALSO CAUSE THE RERENDERING OF THE COMPONENT
+  // const [numitems,setNumItems]=useState(0);
+
+  // you can instead use like this
+
+  const numitems = items.length;
+
   function handleAddItem(item) {
-    //this is not allowed 
+    //this is not allowed
     // items.push(item); //because in react all the state are immutable
 
-    setItems((prevItems)=>[...prevItems,item])
+    setItems((prevItems) => [...prevItems, item]);
     // console.log(items);
   }
 
-  function handleDeleteItem(id)
-  {
-    setItems((prevItems)=>prevItems.filter((item)=>item.id!==id))
+  function handleDeleteItem(id) {
+    setItems((prevItems) => prevItems.filter((item) => item.id !== id));
   }
 
-  function handleToggleItem (id)
-  {
-    setItems((prevItems)=>prevItems.map((item)=>item.id===id?{...item,packed:!item.packed}:item))
+  function handleToggleItem(id) {
+    setItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id ? { ...item, packed: !item.packed } : item
+      )
+    );
   }
   return (
     <div className="app">
       <Logo />
-      <Form  onAddItems={handleAddItem}/>
-      <PackingList items={items} onDeleteItem={handleDeleteItem} onToggleItem ={handleToggleItem}/>
-      <Stats />
+      <Form onAddItems={handleAddItem} />
+      <PackingList
+        items={items}
+        onDeleteItem={handleDeleteItem}
+        onToggleItem={handleToggleItem}
+      />
+      <Stats items={items} />
     </div>
   );
 }
 function Logo() {
   return <h1>🌴Far away💼</h1>;
 }
-function Form({onAddItems}) {
+function Form({ onAddItems }) {
   const [desc, setDesc] = useState("Testing");
   const [quantity, setQuantity] = useState(1);
-  
-
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    // guard clause 
+    // guard clause
 
-    if(!desc) return ;
-    const newItem={desc,quantity,packed:false,id:Date.now()};
+    if (!desc) return;
+    const newItem = { desc, quantity, packed: false, id: Date.now() };
     // console.log(newItem);
-
 
     onAddItems(newItem);
     setDesc("");
     setQuantity(1);
-    
-
   }
   return (
     <form className="add-form" onSubmit={handleSubmit}>
@@ -85,37 +94,53 @@ function Form({onAddItems}) {
     </form>
   );
 }
-function PackingList({items,onDeleteItem,onToggleItem}) {
+function PackingList({ items, onDeleteItem, onToggleItem }) {
   return (
     <div className="list">
       <ul>
         {items.map((item) => (
-          <Item item={item} key={item.id} onDeleteItem={onDeleteItem} onToggleItem={onToggleItem}/>
+          <Item
+            item={item}
+            key={item.id}
+            onDeleteItem={onDeleteItem}
+            onToggleItem={onToggleItem}
+          />
         ))}
       </ul>
     </div>
   );
 }
-function Item({ item ,onDeleteItem,onToggleItem}) {
+function Item({ item, onDeleteItem, onToggleItem }) {
   return (
     <li>
-      <input type="checkbox"  value={item.packed} onChange={()=>onToggleItem(item.id)}/>
+      <input
+        type="checkbox"
+        value={item.packed}
+        onChange={() => onToggleItem(item.id)}
+      />
       <span style={item.packed ? { textDecoration: "line-through" } : {}}>
         {item.quantity} {item.desc}
       </span>
-      <button
-        onClick={
-          ()=>onDeleteItem(item.id)
-        }
-      >❌</button>
+      <button onClick={() => onDeleteItem(item.id)}>❌</button>
     </li>
   );
 }
 
-function Stats() {
-  return (
+function Stats({ items }) {
+  const numItems = items.length;
+  const numPackedItems = items.filter((item) => item.packed).length;
+  const percentage = Math.round(numPackedItems / numItems) * 100;
+  return (!items.length) ? (
+    <p className="footer">
+      <em>🚀 Start Adding some items to your packing list</em>
+    </p>
+  ):(
     <footer className="stats">
-      <em>You have x items in your list, and you already packed X (X%)</em>
+      <em>
+        {percentage === 100
+          ? "You got everything! Ready to Go"
+          : `😎 You have ${numItems} items in your list, and you already packed ${numPackedItems} (${percentage}%)`}
+      </em>
     </footer>
   );
 }
