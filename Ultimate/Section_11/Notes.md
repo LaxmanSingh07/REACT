@@ -78,3 +78,154 @@ Rendering only happens internally inside React, it does not produce visual chang
 ```
 
 
+
+The MECHANICS OF STATE IN REACT 
+
+```
+
+UPDATED STATE <--------------
+     |                      |            
+     |                      |            
+     |                      |            
+     |                      | (update state)           
+RENDER/RE-RENDER            |
+     |                      |
+     |                      |
+     |                      |
+   VIEW (event Handler) ----|
+
+
+```
+
+NOT TRUE #1 ❌: RENDERING IS UPDATING THE SCREEN / DOM
+NOT TRUE #2 ❌: REACT COMPLETELY DISCARDS OLD VIEW (DOM) ON RE-RENDER
+
+
+### The Render Phase
+
+
+`RENDER PHASE`
+
+
+```
+     Component instances 
+     that triggred re-render
+               |
+               |
+         React Elements
+               |
+               |
+        New Virtual DOM
+
+
+```
+
+
+## The virtual DOM (REACT ELEMENT TREE)
+
+1️⃣ Initial Render 
+
+
+     Component Tree
+          |
+     React Element Tree (Virtual DOM)
+
+
+👉 Virtual DOM: Tree of all React 
+elements created from all 
+instances in the component tree
+👉 Cheap and fast to create multiple 
+trees
+👉 Nothing to do with “shadow DOM”
+
+`Shadow Dom` it is related to web components
+
+
+🚨 Rendering a component will 
+cause all of its child components 
+to be rendered as well (no matter 
+if props changed or not)
+
+`It is necessary because React does not know wheather children will be affected`
+
+
+```
+                Component instances 
+                that triggred re-render
+                          |
+                          |
+                    React Elements
+                          |
+                          |
+                   New Virtual DOM
+                          |
+Current                   |
+Fiber tree                |
+(before state -----> Reconciliation
+update)                + Diffing
+                         |
+                         |
+                         |
+                      Updated Fiber tree   
+
+
+```
+
+
+## What is Reconciliation and why do we need it ? 
+
+🤔 Why not update the entire DOM whenever state changes somewhere in the app?
+          |
+          |  (because)
+
+👉 That would be inefficient and wasteful:
+
+1. Writing to the DOM is(relatively) slow
+2. Usually nly a small part of the DOM needs to be updated 
+
+👉 **React reuses** as much of the existing DOM as possible 
+          |
+          | (How?)
+
+💖 **Reconciliation** : Deciding which DOM elements actually need to be inserted, deleted, or updated, in order to reflect the latest state change
+
+
+### The Reconclier : FIBER
+
+React ELEMENT TREEE (VIRTUAL DOM)
+     |
+     | (for initial Render)
+     | 
+Fiber Tree 
+
+👉 Fiber Tree: internal tree that has a "fiber" for each component instance and DOM element 
+👉 Fibers are NOT re-created on every render 
+👉 Work can be done **Asynchoronously** (in chunks)
+👉 Rendering process can be split into 
+chunks, tasks can be prioritized, and work 
+can be paused, reused, or thrown away
+👉 Enables concurrent features like 
+Suspense or transitions
+👉 Long renders won’t block JS engine
+
+
+
+```
+     Fiber ("Unit of Work")
+
+     Current State 
+     props
+     side effects 
+     Used hooks 
+     Queue in Work
+```
+
+
+## Reconcliation in Action
+
+
+
+## The Commit Phase and Browser Paint 
+
+
+
