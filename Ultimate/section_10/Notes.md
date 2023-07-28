@@ -141,3 +141,50 @@ function Sucess()
 - 👉 Prop types are only available in development mode
 
 - 👉 Prop types are not available in production mode
+
+# New Section
+
+## Life cycle of the Component
+
+1. Mounting / Intial Render
+
+👉 Component instance is rendered for the first time
+
+👉 Fresh state and props are **created**
+
+2. Re-render 
+
+         Happens when: 
+           👉 State changes 
+           👉 Props change
+           👉 Parent component re-renders
+           👉 context changes
+
+
+3. Unmounting 💀
+
+        👉 Component instance is removed from the DOM
+        👉 State and props are destroyed
+
+
+## How to fetch the Data from in React 
+
+
+
+## UseEffect hook  ( React Hooks )
+
+- 👉 useEffect is a hook that allows you to perform side effects in function components
+
+- 👉 useEffect is a replacement for the componentDidMount, componentDidUpdate, and componentWillUnmount lifecycle methods
+
+```jsx
+useEffect(() => {
+    // code to run on component mount
+    // code to run on component update
+    return () => {
+        // code to run on component unmount
+    }
+}, [dependencies])
+
+
+```

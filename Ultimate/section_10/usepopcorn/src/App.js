@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const tempMovieData = [
   {
@@ -50,9 +50,23 @@ const tempWatchedData = [
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
+const Key="c474964f"
+
 export default function App() {
-  const [watched, setWatched] = useState(tempWatchedData);
-  const [movies, setMovies] = useState(tempMovieData);
+  const [watched, setWatched] = useState([]);
+  const [movies, setMovies] = useState([]);
+
+  
+  useEffect(function() {
+    fetch(`http://www.omdbapi.com/?apikey=${Key}&s=interstellar`).then(res => res.json()).then(data => setMovies(data.Search));
+    
+  },[]) // it will only run on the mount   
+  // infinite loop
+
+  //it will also cause to the infinite loop
+  // setWatched([])
+
+
   return (
     <>
       <NavBar>
@@ -60,7 +74,7 @@ export default function App() {
         <NumResult movies={movies} />
       </NavBar>
       <Main>
-        {/* <Box element={<MovieList movies={movies} />} />
+        <Box element={<MovieList movies={movies} />} />
         <Box
           element={
             <>
@@ -68,8 +82,8 @@ export default function App() {
               <WatchedMovieList watched={watched} />
             </>
           }
-        /> */}
-
+        />
+{/* 
         <Box>
           <MovieList movies={movies} />
         </Box>
@@ -77,7 +91,7 @@ export default function App() {
         <Box>
           <WatchedSummary watched={watched} />
           <WatchedMovieList watched={watched} />
-        </Box>
+        </Box> */}
       </Main>
     </>
   );
