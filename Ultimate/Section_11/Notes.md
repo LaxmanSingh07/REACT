@@ -442,3 +442,63 @@ kept in the DOM <span style="color: red;">👉**Always use keys!**</span>
 
 ![rk1](./rk1.png)
 ![rk2](./rk2.png)
+
+
+## The Two Types of Logic in React Components
+
+### 1. **Render Logic**
+
+👉 Code that lives at the **top level** of the component function
+👉 Participates in **describing** how the component view looks like
+👉 Executed **every time** the component renders
+
+
+### 2. **EVENT HANDLER FUNCTIONS**
+
+👉 Executed as a **consequence of the event** that the handler is listening for (change event in this example)
+👉 Code that **actually does things**: update state, perform an HTTP request, read an input field, navigate to another page, etc.
+
+## Functional Programming Principles in React
+
+
+👉 Side effect: dependency on or modification of any data outside the function scope. “Interaction with the outside world”. Examples: mutating external variables, HTTP 
+requests, writing to DOM.
+
+
+👉 Pure function: a function that has no side effects.
+     👉 Does not change any variables outside its scope
+     👉 Given the same input, a pure function always returns the same output
+
+
+👉 Side effects are not bad! A program can only be 
+useful if it has some interaction with the outside world
+
+## RULES FOR RENDER LOGIC 
+
+
+
+☝ **Components must be pure when it comes to render logic**: given the same props 
+(input), a component instance should always return the same JSX (output)
+
+☝ **Render logic must produce no side effects**: no interaction with the “outside 
+world” is allowed. So, in render logic:
+
+
+👉 Do NOT perform **network requests** (API calls)
+
+👉 Do NOT start **timers**
+
+👉Do NOT directly **use the DOM API**
+
+👉 Do NOT **mutate objects or variables** outside of the function scope <span style="color: red;" >That's why we can't mutate props!</span>
+
+👉 Do NOT update state (or refs): this will create an infinite loop
+
+
+```
+👋 Side effects are allowed (and encouraged) in event handler functions! 
+
+There is also a special hook to register side effects (useEffect)
+
+
+```
