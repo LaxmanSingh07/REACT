@@ -502,3 +502,95 @@ There is also a special hook to register side effects (useEffect)
 
 
 ```
+
+
+## State Update Batching
+
+### `How State updates are Batched`
+
+👉  Renders are **not** triggered immediately, but **scheduled** for when the JS engine has 
+some “free time”. There is also batching of multiple setState calls in event handlers
+
+```jsx
+
+const reset=function()
+{
+     setAnswer('')
+     console.log(answer)
+     setBest(true)
+     setSolved(false)
+}
+
+// state will get batched for the multiple setState calls
+
+```
+
+     New State: 
+
+     (Batched state update)
+     answer =' '
+     best = true
+     solved = false
+          |
+          |
+     Just one render and commit per event handler 
+
+     RENDER+COMMIT (NO WASTED RENDERS
+          better performance)
+     
+
+## Upating state is Asynchronous
+
+
+```jsx
+
+const reset=function()
+{
+     setAnswer('')
+     console.log(answer)
+     setBest(true)
+     setSolved(false)
+}
+```
+
+`console.log(answer)`
+
+`What will the value of answer be at this point?`
+
+     state is stored in the Fiber during     render phase
+                    |
+                    |
+                    |
+     At this point re-rernder has not happend yet
+                    |
+                    |
+                    |
+     Therefore,answer still contains current state , not the updated state('')
+     (Stale state)
+                    |
+                    |
+
+     Upating state in react is asynchronous
+                    
+
+👉 Updated state variables are not immediately available after setState call, but only after the re-render
+👉 This also applies when only one state variable is updated 
+👉 If we need to update state based on previous update, we use setState with callback (setAnswer(answer=>...)
+
+## Batching beyond event Handler Functions 
+
+
+Automatic batching in ...
+
+
+||React 17 | React 18+|
+|---|---------|----------|
+|Event handlers|✅|✅|
+|TIMEOUTS|❌|✅|
+|PROMISES|❌|✅|
+|Native events|❌|✅|
+
+
+`if you every find yourself that automatic batching is problematic then `
+
+👉 We can opt out of automatic batching by wrapping a state update in ReactDOM.flushSync() (but you will never need this)
