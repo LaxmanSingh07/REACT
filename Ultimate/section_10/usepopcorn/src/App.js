@@ -56,9 +56,23 @@ export default function App() {
   const [watched, setWatched] = useState([]);
   const [movies, setMovies] = useState([]);
 
+  const query = "matrix";
   
-  useEffect(function() {
-    fetch(`http://www.omdbapi.com/?apikey=${Key}&s=interstellar`).then(res => res.json()).then(data => setMovies(data.Search));
+  useEffect(function () {
+    
+    async function fetchMovies()
+    {
+      const res = await fetch(`http://www.omdbapi.com/?apikey=${Key}&s=${query}}`);
+
+      const data = await res.json();
+      setMovies(data.Search);
+
+      // console.log(movies); // stale state 
+
+        console.log(data.Search);
+    }
+    
+    fetchMovies();
     
   },[]) // it will only run on the mount   
   // infinite loop
@@ -74,16 +88,17 @@ export default function App() {
         <NumResult movies={movies} />
       </NavBar>
       <Main>
-        <Box element={<MovieList movies={movies} />} />
-        <Box
-          element={
-            <>
-              <WatchedSummary watched={watched} />
-              <WatchedMovieList watched={watched} />
-            </>
-          }
-        />
-{/* 
+    {/* //     <Box element={<MovieList movies={movies} />} />
+    //     <Box */}
+    {/* //       element={ */}
+    {/* //         <>
+    //           <WatchedSummary watched={watched} />
+    //           <WatchedMovieList watched={watched} />
+    //         </>
+    //       }
+    //     /> */}
+    
+
         <Box>
           <MovieList movies={movies} />
         </Box>
@@ -91,7 +106,7 @@ export default function App() {
         <Box>
           <WatchedSummary watched={watched} />
           <WatchedMovieList watched={watched} />
-        </Box> */}
+        </Box>
       </Main>
     </>
   );

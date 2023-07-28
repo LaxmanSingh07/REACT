@@ -211,3 +211,10 @@ setting up timers, manually accessing the DOM, etc
 |:-:|:-:|
 |👉 Triggred by Event| 👉 Triggred by render|
 |👉 Executed when the coressponding event happens| 👉 Exectued after the component mounts (intial render) ,and after susequent re-renders (according to the dependency array)|
+
+
+## When the Strict mode in React 18 
+
+It will call the render method twice
+
+`It will not happen in production mode` only in the development mode
