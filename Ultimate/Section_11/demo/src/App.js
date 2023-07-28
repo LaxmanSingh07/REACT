@@ -53,7 +53,7 @@ function Tabbed({ content }) {
 
       {/* When we call the component directly react will no longer see it as a component instance  */}
       {/* it is violting the rules of hooks */}
-      {TabContent({ item: content.at(0) })} 
+      {/* {TabContent({ item: content.at(0) })}  */}
     </div>
   );
 }
@@ -73,8 +73,41 @@ function TabContent({ item }) {
   const [showDetails, setShowDetails] = useState(true);
   const [likes, setLikes] = useState(0);
 
+  console.log("rendering");
+
   function handleInc() {
     setLikes(likes + 1);
+  }
+
+  function handleInc3() {
+
+    // setLikes(likes + 1);
+    // console.log(likes); //it will print the old value
+    // //stale state problem
+    // setLikes(likes + 1);
+    // setLikes(likes + 1);
+    // // it will not increment 3 times
+    // //why?
+
+    //call back function it will increment 3 times
+
+    setLikes(likes=>likes+1);
+    setLikes(likes=>likes+1);
+    setLikes(likes=>likes+1);
+    
+  }
+
+  function handleUndo() {
+    setShowDetails(true);
+    setLikes(0);
+    console.log(likes);
+  }
+
+  function handleUndoLater() {
+    setTimeout(() => {
+      setShowDetails(true);
+      setLikes(0);
+    }, 2000);
   }
 
   return (
@@ -90,13 +123,13 @@ function TabContent({ item }) {
         <div className="hearts-counter">
           <span>{likes} ❤️</span>
           <button onClick={handleInc}>+</button>
-          <button>+++</button>
+          <button onClick={handleInc3}>+++</button>
         </div>
       </div>
 
       <div className="tab-undo">
-        <button>Undo</button>
-        <button>Undo in 2s</button>
+        <button onClick={handleUndo}>Undo</button>
+        <button onClick={handleUndoLater}>Undo in 2s</button>
       </div>
     </div>
   );
