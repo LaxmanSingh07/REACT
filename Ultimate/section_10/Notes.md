@@ -188,3 +188,26 @@ useEffect(() => {
 
 
 ```
+
+
+## Where to Create SIDE EFFECTS 
+
+👉 REVIEW: A side effect is basically any “interaction between a React component and the world outside the component”. 
+We can also think of a side as “code that actually does something”. Examples: Data fetching, setting up subscriptions, 
+setting up timers, manually accessing the DOM, etc
+
+### Side Effects are of two types 
+
+1. Event Handlers (Triggred by Event)
+2. Effects (useEffect) (Triggred by render)
+
+👉 Effects allow us to write code that will run a **different moments:** mount ,re-render , or unmount 
+
+
+## EVENT HANDLERS VS EFFECTS
+
+
+|Event Handlers| Effects|
+|:-:|:-:|
+|👉 Triggred by Event| 👉 Triggred by render|
+|👉 Executed when the coressponding event happens| 👉 Exectued after the component mounts (intial render) ,and after susequent re-renders (according to the dependency array)|
