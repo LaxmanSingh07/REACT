@@ -123,3 +123,7 @@ setCount((currentCount)=>currentCount+1);
 
 
 `Make sure to Not mutate objects or arrays,but to replace them`
+
+## REFS
+
+### How Not to Select DOM elements in React 
