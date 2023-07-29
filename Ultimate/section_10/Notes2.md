@@ -171,3 +171,28 @@ Creating a variable that stays the same between renders (e.g. previous state, se
 |Immutable|Yes|No|
 |Async updates|Yes|No|
 |Stores DOM nodes|No|Yes|
+
+## CUSTOM HOOKS
+
+### **REUSING LOGIC WITH CUSTOM HOOK**
+
+👋 "I need to Reuse" 
+
+### 1. Ui :
+
+ Component
+
+### 2. Logic
+
+        Does logic contain any hooks ? 
+
+        NO : Regular function
+        Custom Hook : Function name starts with use
+
+👉 Allow us to reuse **non-visual logic** between components
+
+👉 One custom hook should have **one purpose**, to make it **reusable** and **portable** (even across mulitple projects)
+
+👉 **Rules of hooks** apply to custom hooks too 
+
+
