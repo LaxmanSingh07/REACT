@@ -73,3 +73,53 @@ different lifecycle points (before v16.8 only available in class components)
 ![](./hook2.png)
 
 `linked list of the hook`
+
+
+## Lazy initial state
+
+👉  useState accepts a function that returns the initial state
+
+## Summary of Defining State and Updating State
+
+1. Creating state 
+
+`Simple`
+
+```jsx
+const [count,setCount]=useState(23);
+```
+
+`Lazy Based on function`
+
+```jsx
+
+const [count,setCount]=useState(()=>23);
+
+```
+
+
+`function must be pure and accept no arguments. Called only on inital render`
+
+
+
+## Updating State
+
+`Simple`
+
+```jsx
+
+setCount(23);
+
+```
+
+`Based on Current State`
+
+```jsx
+
+setCount((currentCount)=>currentCount+1);
+
+```
+```function must be pure .```
+
+
+`Make sure to Not mutate objects or arrays,but to replace them`
