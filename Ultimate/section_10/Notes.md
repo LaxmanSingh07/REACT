@@ -311,4 +311,40 @@ Changes )               Are deeply Conntected
 
 ![](./USE.png)
 
-##
+
+## What is the **CLEANUP FUNCTION**?
+
+👉 The cleanup function is a function that is **returned by the effect function** (option).
+
+👉 Runs on two different occasions:
+
+    1 Before the effect is executed again
+    2 After a component has unmounted
+
+```
+Component           Exectue effect if
+            --->    dependency array
+Renders             includes updated data
+
+Component 
+            --->   Execute cleanup function
+Umounts
+
+```
+
+👉 Necessary whenever the side effect keeps 
+happening after the component has been 
+re-rendered or unmounted
+
+
+|✨ EFFECT |🧹 POTENTIAL CLEANUP|
+|:-:|:-:|
+|👉HTTP Request|👉Cancel the request|
+|👉API Subscription|👉Unsubscribe from the API|
+|👉Start Timer|👉Stop the timer|
+|👉Add Event Listener|👉Remove the event listener|
+
+
+☝ Each effect should do only one thing! Use 
+one useEffect hook for each side effect. 
+This makes effects easier to clean up
