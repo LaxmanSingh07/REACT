@@ -257,6 +257,8 @@ function MovieDetails({
   )?.userRating;
 
 
+
+
   
   const {
     Title: title,
@@ -279,6 +281,23 @@ function MovieDetails({
   //   return <p>Top Rated Movie</p>;
   // }
 
+  // const [isTop, setIsTop] = useState(false);
+  // console.log(isTop);
+  // useEffect(
+  //   function () {
+  //     setIsTop(imdbRating > 8);
+  //   },
+  //   [imdbRating]
+  // );
+
+  //DERIVED STATE
+  
+  const isTop = imdbRating > 8;
+  console.log(isTop);
+
+  // const [avgRating, setAvgRating] = useState(0)
+  
+
   function handleAdd() {
     const newMovie = {
       imdbID: selectedId,
@@ -291,6 +310,9 @@ function MovieDetails({
     };
     onAddWatchedMovie(newMovie);
     onCloseMovie();
+
+    // setAvgRating(Number(imdbRating))
+    // setAvgRating(avgRating=>(avgRating+userRating)/2)
   }
   // console.log(userRating);
 
@@ -365,7 +387,9 @@ function MovieDetails({
                 {imdbRating}
               </p>
             </div>
-          </header>
+            </header>
+            
+            {/* <p>{avgRating}</p> */}
 
           <section>
             <div className="rating">
