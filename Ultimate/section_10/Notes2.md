@@ -127,3 +127,47 @@ setCount((currentCount)=>currentCount+1);
 ## REFS
 
 ### How Not to Select DOM elements in React 
+
+## WHAT ARE REFS?
+
+`REF WITH useREf
+
+``` jsx 
+
+const myRef=useRef(initialValue);
+
+__________________________
+|                         |      
+|  myRef                  |      
+|  .current(1000)         |      
+|                         |      
+---------------------------
+
+```
+
+```WE can write to and read from the ref using the .current property```
+
+```jsx
+
+myRef.current=1000;
+
+
+```
+
+
+👉 “Box” (object) with a **mutable** .current property that is 
+**persisted across renders** (“normal” variables are always reset)
+👉 Two big use cases:
+Creating a variable that stays the same between renders (e.g. previous state, setTimeout id, etc.) 1
+2 Selecting and storing DOM elements
+
+
+## State vs Refs
+
+| | State | Refs |
+|-|------|------|
+|Persists across renders|Yes|Yes|
+|Updating causes re-render|Yes|No|
+|Immutable|Yes|No|
+|Async updates|Yes|No|
+|Stores DOM nodes|No|Yes|
