@@ -53,27 +53,53 @@ const average = (arr) =>
 const Key="c474964f"
 
 export default function App() {
+  const [query, setQuery] = useState("");
   const [watched, setWatched] = useState([]);
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState("");
 
-  const query = "matrix";
+  const tempQuery = "interstellar";
+
+
+  /*
+  useEffect(function ()
+  {
+    console.log("After initial Render");
+  },[])
+
+  useEffect(function () {
+    console.log("After The EVERY Render");
+  })
+
+  useEffect(function () {
+    console.log("D");
+
+  },[query])
+
+  */
   
+  // console.log("During Render");
+
+
   useEffect(function () {
     async function fetchMovies() {
       try {
         setIsLoading(true);
+        setIsError("");
         const res = await fetch(
-          `http://www.omdbapi.com/?apikey=${Key}&s=${query}}`
+          `http://www.omdbapi.com/?apikey=${Key}&s=${query}`
         );
 
         if (!res.ok)
           throw new Error("Something went wrong, please try again later");
         
         const data = await res.json();
-        if (data.Respose === "False")
-          throw new Error("Movie not Found");
+        
+        // console.log(data);
+
+        if (data.Response === "False")
+          throw new Error(data.Error);
         
         setMovies(data.Search);
 
@@ -88,8 +114,14 @@ export default function App() {
       }
     }
 
+    if (query.length<3) {
+      setMovies([]);
+      setIsError("");
+      return;
+    }
+
     fetchMovies();
-  }, []); // it will only run on the mount
+  }, [query]); // it will only run on the mount
   // infinite loop
 
   //it will also cause to the infinite loop
@@ -98,7 +130,7 @@ export default function App() {
   return (
     <>
       <NavBar>
-        <Search />
+        <Search query={query}  setQuery={setQuery}/>
         <NumResult movies={movies} />
       </NavBar>
       <Main>
@@ -166,20 +198,19 @@ function Logo() {
 function NumResult({ movies }) {
   return (
     <p className="num-results">
-      Found <em>{movies.length}</em> results
+      Found <em>{movies?movies.length:0}</em> results
     </p>
   );
 }
 
-function Search() {
-  const [query, setQuery] = useState("");
+function Search({query,setQuery}) {
   return (
     <input
       className="search"
       type="text"
       placeholder="Search movies..."
       value={query}
-      onChange={(e) => setQuery(e.target.value)}
+      onChange={(e) =>setQuery(e.target.value)}
     />
   );
 }
