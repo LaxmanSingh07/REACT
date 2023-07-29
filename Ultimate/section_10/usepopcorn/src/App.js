@@ -56,33 +56,44 @@ export default function App() {
   const [watched, setWatched] = useState([]);
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState("");
 
   const query = "matrix";
   
   useEffect(function () {
-    
-    async function fetchMovies()
-    {
-      setIsLoading(true); 
-      const res = await fetch(`http://www.omdbapi.com/?apikey=${Key}&s=${query}}`);
+    async function fetchMovies() {
+      try {
+        setIsLoading(true);
+        const res = await fetch(
+          `http://www.omdbapi.com/?apikey=${Key}&s=${query}}`
+        );
 
-      const data = await res.json();
-      setMovies(data.Search);
+        if (!res.ok)
+          throw new Error("Something went wrong, please try again later");
+        
+        const data = await res.json();
+        if (data.Respose === "False")
+          throw new Error("Movie not Found");
+        
+        setMovies(data.Search);
 
-      // console.log(movies); // stale state 
+        // console.log(movies); // stale state
         // console.log(data.Search);
-      
-      setIsLoading(false);
+
+        setIsLoading(false);
+      } catch (error) {
+        setIsError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
     }
-    
+
     fetchMovies();
-    
-  },[]) // it will only run on the mount   
+  }, []); // it will only run on the mount
   // infinite loop
 
   //it will also cause to the infinite loop
   // setWatched([])
-
 
   return (
     <>
@@ -91,22 +102,24 @@ export default function App() {
         <NumResult movies={movies} />
       </NavBar>
       <Main>
-    {/* //     <Box element={<MovieList movies={movies} />} />
-    //     <Box */}
-    {/* //       element={ */}
-    {/* //         <>
-    //           <WatchedSummary watched={watched} />
-    //           <WatchedMovieList watched={watched} />
-    //         </>
-    //       }
-    //     /> */}
-    
+        {/* <Box element={<MovieList movies={movies} />} />
+        <Box
+          element={
+            <>
+              <WatchedSummary watched={watched} />
+              <WatchedMovieList watched={watched} />
+            </>
+          }
+        /> */}
 
         <Box>
-          {
-           isLoading?<Loader/>:   
-          <MovieList movies={movies} />
-          }
+          {/* {isLoading ? <Loader /> : <MovieList movies={movies} /> */}
+
+          {isLoading && <Loader />}
+
+          {!isLoading && !isError && <MovieList movies={movies} />}
+
+          {!isLoading && isError && <ErrorMessage message={isError} />}
         </Box>
 
         <Box>
@@ -121,6 +134,15 @@ export default function App() {
 function Loader()
 {
   return <p className="loader">Loading...</p>
+}
+
+function ErrorMessage({ message }) {
+  return (
+    <p className="error">
+      <span role="img">⚠️</span>
+      {message}
+    </p>
+  );
 }
 
 function NavBar({ children }) {

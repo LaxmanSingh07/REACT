@@ -218,3 +218,6 @@ setting up timers, manually accessing the DOM, etc
 It will call the render method twice
 
 `It will not happen in production mode` only in the development mode
+
+## Handling Errors 
+
