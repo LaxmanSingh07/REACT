@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import StarRating from "./components/StarRating";
+import { useMovies } from "./useMovies";
 
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -8,13 +9,12 @@ const Key = "c474964f";
 
 export default function App() {
   const [query, setQuery] = useState("");
-  const [movies, setMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState("");
   const [selectedId, setSelectedId] = useState(null);
 
   // const [watched, setWatched] = useState([]);
   // console.log("During Render");
+
+  const { movies, isLoading, isError } = useMovies(query, handleCloseMovie);
 
   const [watched, setWatched] = useState(function () {
     const storedValue = localStorage.getItem("watched");
@@ -43,62 +43,8 @@ export default function App() {
       localStorage.setItem("watched", JSON.stringify(watched));
     },
     [watched]
-  );
-
-  useEffect(
-    function () {
-      const controller = new AbortController();
-
-      async function fetchMovies() {
-        try {
-          setIsLoading(true);
-          setIsError("");
-          const res = await fetch(
-            `http://www.omdbapi.com/?apikey=${Key}&s=${query}`,
-            { signal: controller.signal }
-          );
-
-          if (!res.ok)
-            throw new Error("Something went wrong, please try again later");
-
-          const data = await res.json();
-
-          console.log(data);
-
-          if (data.Response === "False") throw new Error(data.Error);
-
-          setMovies(data.Search);
-          setIsError("");
-
-          console.log(data.Search);
-          console.log(movies); // stale state
-
-          setIsLoading(false);
-        } catch (error) {
-          setIsError(error.message);
-          if (error.name !== "AbortError") {
-            setIsError(error.message);
-          }
-        } finally {
-          setIsLoading(false);
-        }
-      }
-
-      if (query.length < 3) {
-        setMovies([]);
-        setIsError("");
-        return;
-      }
-
-      handleCloseMovie();
-      fetchMovies();
-
-      return function () {
-        controller.abort();
-      };
-    },
-    [query]
   ); // it will only run on the mount
+
   // infinite loop
 
   //it will also cause to the infinite loop
