@@ -71,3 +71,5 @@ different lifecycle points (before v16.8 only available in class components)
 ![](./hook1.png)
 
 ![](./hook2.png)
+
+`linked list of the hook`
