@@ -99,12 +99,14 @@ export default function App() {
   }
   useEffect(
     function () {
+      const controller = new AbortController();
+
       async function fetchMovies() {
         try {
           setIsLoading(true);
           setIsError("");
           const res = await fetch(
-            `http://www.omdbapi.com/?apikey=${Key}&s=${query}`
+            `http://www.omdbapi.com/?apikey=${Key}&s=${query}`,{signal:controller.signal}
           );
 
           if (!res.ok)
@@ -117,6 +119,7 @@ export default function App() {
           if (data.Response === "False") throw new Error(data.Error);
 
           setMovies(data.Search);
+          setIsError("");
 
           // console.log(data.Search);
           // console.log(movies); // stale state
@@ -124,6 +127,10 @@ export default function App() {
           setIsLoading(false);
         } catch (error) {
           setIsError(error.message);
+          if (error.name !== "AbortError")
+          {
+            setIsError(error.message);
+            }
         } finally {
           setIsLoading(false);
         }
@@ -136,6 +143,11 @@ export default function App() {
       }
 
       fetchMovies();
+
+      return function () {
+        controller.abort();
+      }
+
     },
     [query]
   ); // it will only run on the mount
@@ -352,7 +364,15 @@ function MovieDetails({
 
   useEffect(function () {
     if(!title) return;
-    document.title = `Movie | ${title}`
+    document.title = `Movie | ${title}`; 
+
+    //it is cleanUp function
+
+    return function () {
+      document.title = "usePopcorn";
+      // it will still print the title the reason is clouser
+      console.log(`CleanUp ${title}`);
+    };
   },[title])
 
   return (

@@ -348,3 +348,15 @@ re-rendered or unmounted
 ☝ Each effect should do only one thing! Use 
 one useEffect hook for each side effect. 
 This makes effects easier to clean up
+
+
+## Cleaning up Data Fetching
+
+`Race Condition` : 
+
+It is a condition which occurs when two or more threads (or processes) try to access the same resource at the same time and the output of the program depends on the order in which the access takes place.
+
+
+### `AbortController`
+
+👉 The AbortController interface represents a controller object that allows you to abort one or more DOM requests as and when desired.
