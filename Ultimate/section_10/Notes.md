@@ -221,3 +221,94 @@ It will call the render method twice
 
 ## Handling Errors 
 
+
+
+## What's the USEEFFECT **DEPENDENCY ARRAY?**
+
+👉 By default, effects run **after every render**. We can prevent that by passing a **dependency array**
+
+👉 Without the dependency array, React doesn’t 
+know **when** to run the effect
+
+👉 **Each time one of the dependencies changes, the effect will be executed again**
+
+☝ Every **state variable and prop** used **inside the effect MUST be included in the dependency array**
+
+- if the last point is not followed then it will cause the **BUG** which is known as **STALE CLOSURE BUG**
+
+
+## How to use the USEEFFECT **DEPENDENCY ARRAY?**
+
+```jsx
+
+const title=props.movie.title;
+const [userRating,setUserRating]=useState('');
+
+useEffect(
+    function()
+    {
+        if(!title) return ;
+        document.title=`${title} ${
+            useRating && `(Rated ${userRating} 🌟)`
+        }`;
+        return () => {
+            document.title='React Movie Cards';
+        }
+
+        },[title,userRating]
+    }
+
+
+```
+
+## USEEFFECT IS A **SYNCHRONIZATION** MECHANISM
+
+`THE MECHANISM OF EFFECTS` :
+
+👉 useEffect is like an **event listener** that is listening for one dependency to 
+change. **Whenever a dependency changes, it will execute the effect again**.
+👉 Effects **react** to updates to state and props used inside the effect (the 
+dependencies). So **effects are “reactive”** (like state updates re-rendering the UI)
+
+
+        Component
+                    ---> Synchornization 
+                                        -----> External System
+                    Mechanism
+    (State/props)
+
+
+## SYNCHRONIZATION AND LIFE CYCLE 
+
+
+```
+            Effect is Executed
+                Again
+             /                 |     
+Dependency  /                  | 
+(State or Props          Effect and Component    
+Changes )               Are deeply Conntected 
+            \
+             \
+            Component is
+            Re-Rendered
+
+```
+
+👉 We can use the dependency array to run effects when the component renders or re-renders
+
+
+### Synchornization and Life Cycle
+
+|Dependency Array|🔃Synchronization|🐣LifeCycle|
+|:-:|:-:|:-:|
+|useEffect(fn,[x,y,z]);|Effect Synchronized with x,y,z|Runs on mount and re-render triggered by upating x,y,z|
+|useEffect(fn,[]);|Effect Synchronized with nothing|Runs on mount only|
+|useEffect(fn);|Effect Synchronized with nothing|Runs on mount and re-render|
+
+
+## When ARE EFFECTS EXECUTED?
+
+![](./USE.png)
+
+##
