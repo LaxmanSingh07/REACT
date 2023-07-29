@@ -66,21 +66,21 @@ export default function App() {
   /*
   useEffect(function ()
   {
-    console.log("After initial Render");
+    // console.log("After initial Render");
   },[])
 
   useEffect(function () {
-    console.log("After The EVERY Render");
+    // console.log("After The EVERY Render");
   })
 
   useEffect(function () {
-    console.log("D");
+    // console.log("D");
 
   },[query])
 
   */
 
-  // console.log("During Render");
+  console.log("During Render");
 
   function handleSelectMovie(id) {
     setSelectedId((selectedId) => (id === selectedId ? null : id));
@@ -97,6 +97,7 @@ export default function App() {
   function handleDeleteWatchedMovie(id) {
     setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
   }
+
   useEffect(
     function () {
       const controller = new AbortController();
@@ -106,7 +107,8 @@ export default function App() {
           setIsLoading(true);
           setIsError("");
           const res = await fetch(
-            `http://www.omdbapi.com/?apikey=${Key}&s=${query}`,{signal:controller.signal}
+            `http://www.omdbapi.com/?apikey=${Key}&s=${query}`,
+            { signal: controller.signal }
           );
 
           if (!res.ok)
@@ -114,23 +116,22 @@ export default function App() {
 
           const data = await res.json();
 
-          // console.log(data);
+          console.log(data);
 
           if (data.Response === "False") throw new Error(data.Error);
 
           setMovies(data.Search);
           setIsError("");
 
-          // console.log(data.Search);
-          // console.log(movies); // stale state
+          console.log(data.Search);
+          console.log(movies); // stale state
 
           setIsLoading(false);
         } catch (error) {
           setIsError(error.message);
-          if (error.name !== "AbortError")
-          {
+          if (error.name !== "AbortError") {
             setIsError(error.message);
-            }
+          }
         } finally {
           setIsLoading(false);
         }
@@ -142,12 +143,12 @@ export default function App() {
         return;
       }
 
+      handleCloseMovie();
       fetchMovies();
 
       return function () {
         controller.abort();
-      }
-
+      };
     },
     [query]
   ); // it will only run on the mount
@@ -196,7 +197,8 @@ export default function App() {
           ) : (
             <>
               <WatchedSummary watched={watched} />
-                <WatchedMovieList watched={watched} 
+              <WatchedMovieList
+                watched={watched}
                 onDeleteWatchedMovie={handleDeleteWatchedMovie}
               />
             </>
@@ -316,7 +318,9 @@ function MovieDetails({
 
   const isWatched = watched.map((movie) => movie.imdbID).includes(selectedId);
 
-  const watchedUserRating = watched.find((movie) => movie.imdbID === selectedId)?.userRating;
+  const watchedUserRating = watched.find(
+    (movie) => movie.imdbID === selectedId
+  )?.userRating;
 
   const {
     Title: title,
@@ -344,7 +348,7 @@ function MovieDetails({
     onAddWatchedMovie(newMovie);
     onCloseMovie();
   }
-  console.log(userRating);
+  // console.log(userRating);
 
   useEffect(
     function () {
@@ -362,18 +366,38 @@ function MovieDetails({
     [selectedId]
   );
 
-  useEffect(function () {
-    if(!title) return;
-    document.title = `Movie | ${title}`; 
+  useEffect(
+    function () {
+      if (!title) return;
+      document.title = `Movie | ${title}`;
 
-    //it is cleanUp function
+      //it is cleanUp function
 
-    return function () {
-      document.title = "usePopcorn";
-      // it will still print the title the reason is clouser
-      console.log(`CleanUp ${title}`);
-    };
-  },[title])
+      return function () {
+        document.title = "usePopcorn";
+        // it will still print the title the reason is clouser
+        // console.log(`CleanUp ${title}`);
+      };
+    },
+    [title]
+  );
+
+  useEffect(
+    function () {
+      function callback(e) {
+        if (e.key === "Escape") {
+          onCloseMovie();
+          // console.log("closing");
+        }
+      }
+
+      document.addEventListener("keydown", callback);
+      return function () {
+        document.removeEventListener("keydown", callback);
+      };
+    },
+    [onCloseMovie]
+  );
 
   return (
     <div className="details">
@@ -415,7 +439,9 @@ function MovieDetails({
                   )}
                 </>
               ) : (
-                    <p>You rated with movie {watchedUserRating} <span>⭐</span></p>
+                <p>
+                  You rated with movie {watchedUserRating} <span>⭐</span>
+                </p>
               )}
             </div>
             <p>
