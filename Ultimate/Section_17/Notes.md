@@ -60,3 +60,10 @@
 |Utility-first CSS|JSX|className prop|<span style="color: green;">ClassName Group</span>|Jsx element|Css|
 
 `Alternative to styling with CSS: UI libraries like MUI,Chakra UI,Mantine,etc.`
+
+## Nested Routes 
+
+### What is Outlet?
+
+
+## What is Index Route?
