@@ -89,3 +89,12 @@ on how the reducer should update state
 
 ![](./U1.png)
 ![](./U2.png)
+
+## USESTATE **VS** USEREDUCER 
+
+| useState | useReducer |
+| --- | --- |
+|👉 Ideal for single, independent pieces of state (numbers, strings, single arrays, etc.)|👉Ideal for multiple related pieces of state and complex state (e.g. object with many values and nested objects or arrays)||👉 Logic to update state is placed directly in event handlers or effects, spread all over one or multiple components|||👉Logic to update state lives in one central place, decoupled from components: the reducer|
+|👉 State is updated by calling setState (setter returned from useState)|👉State is updated by dispatching an actionto a reducer|
+|👉 Imperative state updates|👉Declarative state updates: complex state transitions are mapped to actions|
+|👉 Easy to understand and to use|More difficult to understand and implement|
