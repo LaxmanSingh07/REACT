@@ -41,3 +41,22 @@
 
 
 ```
+
+
+## Link and NavLink
+
+`<Link>` is used to navigate between different routes. It works like the anchor tag in HTML. It prevents the default action of reloading the page when clicked on the link.
+
+`<NavLink>` is similar to `<Link>`, but it has the ability to add styling attributes to the rendered element when it matches the current URL.
+
+## STYLING OPTIONS FOR REACT APPLICATIONS 
+
+|Styling Option|Where?|How?|SCOPE|BASED ON|problems|
+|--------------|------|----|-----|--------|----|
+|Inline Styling|JSX|style={{color: 'white'}}|<span style="color: green;">JSX element</span>|CSS|Local|
+|CSS or SASS file|External file|className prop|<span style="color: red;">Entire app</span>|CSS|Global,cause conflicts|
+|Css Modules|One external file per component|className prop|<span style="color: green;">Component</span>|JavaScript|No|
+|Cass-in-JS|External file or component file|create New Component|<span style="color: green;">Component</span>|JavaScript|No|
+|Utility-first CSS|JSX|className prop|<span style="color: green;">ClassName Group</span>|Jsx element|Css|
+
+`Alternative to styling with CSS: UI libraries like MUI,Chakra UI,Mantine,etc.`
