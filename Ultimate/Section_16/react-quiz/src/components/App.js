@@ -64,6 +64,15 @@ function reducer(state, action) {
         status: "finished",
         highscore: Math.max(state.highscore, state.points),
       };
+  
+    case "restart":
+      return {
+        ...state,
+        questions: state.questions,
+        status: "ready"
+      };
+    
+    // return {...state,points:0,index:0,answer:null,status:"ready"}
 
     default:
       throw new Error(`Unrecognized action: ${action.type}`);
@@ -118,6 +127,7 @@ function App() {
             points={points}
             maxPossiblePoints={maxPossiblePoints}
             highscore={highscore}
+            dispatch={dispatch}
           />
         )}
       </Main>
