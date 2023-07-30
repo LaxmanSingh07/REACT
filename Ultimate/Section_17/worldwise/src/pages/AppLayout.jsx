@@ -1,7 +1,8 @@
+import AppNav from "./AppNav"
 
 function AppLayout() {
   return (
-    <div>AppLayout</div>
+   <AppNav/>
   )
 }
 
