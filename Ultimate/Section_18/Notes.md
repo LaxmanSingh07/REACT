@@ -54,3 +54,54 @@ available (usually state and functions)
 
 ## A custom Proiver and HOOK
 
+
+## REVIEW : **WHAT IS STATE MANAGEMENT?**
+
+🏠 **STATE MANAGEMENT :** Giving each piece of state the right **home**
+
+✅ **when** to use state 
+
+✅ **Types** of state (**accessibility**): local vs. global
+
+### Types of State 
+
+1️⃣  **STATE ACCESSIBILITY** 
+
+|🏡**LOCAL STATE**|   VS | 🌏**GLOBAL STATE**|
+|-----------------|-----|------------------|
+|👉 Needed only by **one or few Components**| |👉 Needed by **many components**|
+|👉 Only accessible in **Component and its children**| |👉 Accessible **anywhere** in the app|
+
+`if thie component was rendered twice, should a state update in one of them reflect in the other one ?`
+
+if no, then it is a local state.
+
+but if yes, then it is a global state.
+
+
+
+2️⃣ **STATE DOMAIN**
+
+|REMOTE STATE|VS|UI STATE|
+|------------|--|--------|
+|👉 All application data **loaded from a remote server (API)||👉 **Everything else ** 😅|
+|Usually **asynchronous**|| | 👉 Theme,list filters,form data,etc.|
+|👉 Needs re-fetching + updating||👉 Usually **synchronous** and stored in the application |
+
+
+## STATE **PLACEMENT**
+
+### WHERE TO PLACE STATE ? 
+
+
+|Component|TOOLS|WHEN TO USE?|
+|-----|-----|-----------|
+|🏠 Local component |useState, useReducer, or useRef |**Local state**|
+|👪 Parent component |useState, useReducer, or useRef| Lifting up state|
+|🛞 Context| Context API + useState or useReducer| Global state (preferably UI state)|
+|🧧 3rd-party library| Redux, React Query, SWR, Zustand, etc. |Global state (remote or UI)|
+| URL |React Router| Global state, passing between pages|
+|💻 Browser| Local storage, session storage, etc.| Storing data in user’s browser|
+
+
+![](./how.png)
