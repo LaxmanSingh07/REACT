@@ -105,3 +105,7 @@ There are three steps to Use params in React Route
 3. Read the state from the URL
 
 ### useParams() hook 
+
+### useSearchParam() hook
+
+### useNavigate() hook
