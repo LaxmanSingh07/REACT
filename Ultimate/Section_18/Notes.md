@@ -48,3 +48,5 @@ available (usually state and functions)
 3. **Consumers**: all components that read the provided context value
 
 ![Context Api](./CONTEXT_API.png)
+
+## useContext Hook
