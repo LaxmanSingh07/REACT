@@ -1,25 +1,36 @@
-import React from 'react'
-import styles from './Map.module.css'
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import React, { useEffect } from "react";
 import { useState } from "react";
+import styles from "./Map.module.css";
+import { useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { useCities } from "../contexts/CitiesContext";
-
+import { useMap } from "react-leaflet";
+import { useMapEvents } from "react-leaflet";
 function Map() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const { cities } = useCities();
 
   const [mapPosition, setMapPositon] = useState([40, 0]);
 
-  const [searchParams, setSearchParams] = useSearchParams();
-  const lat = searchParams.get("lat");
-  const lng = searchParams.get("lng");
+  const [searchParams] = useSearchParams();
+
+  const mapLat = searchParams.get("lat");
+  const mapLng = searchParams.get("lng");
+
+  useEffect(
+    function () {
+      if (mapLat && mapLng) setMapPositon([mapLat, mapLng]);
+    },
+    [mapLat, mapLng]
+  );
 
   return (
     <div className={styles.mapContainer}>
       <MapContainer
         center={mapPosition}
+        // center={[mapLat, mapLng]}
         zoom={13}
         scrollWheelZoom={true}
         className={styles.map}
@@ -31,7 +42,7 @@ function Map() {
         {cities.map((city) => (
           <Marker
             position={[city.position.lat, city.position.lng]}
-            key={city.id }
+            key={city.id}
           >
             <Popup>
               <span>{city.emoji}</span>
@@ -39,9 +50,27 @@ function Map() {
             </Popup>
           </Marker>
         ))}
+        <ChangeCenter position={mapPosition} />
+        <DetectClick />
       </MapContainer>
     </div>
   );
 }
 
-export default Map
+//this is our own component
+function ChangeCenter(position) {
+  const map = useMap();
+  map.setView(position);
+  return null;
+}
+
+//custom component
+
+function DetectClick() {
+  const navigate = useNavigate();
+  useMapEvents({
+    click: (e) => navigate(`form`),
+  });
+}
+
+export default Map;
