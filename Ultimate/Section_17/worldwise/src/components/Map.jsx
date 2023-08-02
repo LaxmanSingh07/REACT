@@ -31,7 +31,7 @@ function Map() {
       <MapContainer
         center={mapPosition}
         // center={[mapLat, mapLng]}
-        zoom={13}
+        zoom={6}
         scrollWheelZoom={true}
         className={styles.map}
       >
@@ -58,7 +58,7 @@ function Map() {
 }
 
 //this is our own component
-function ChangeCenter(position) {
+function ChangeCenter({ position }) {
   const map = useMap();
   map.setView(position);
   return null;
