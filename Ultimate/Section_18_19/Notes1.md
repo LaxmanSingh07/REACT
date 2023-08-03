@@ -91,3 +91,7 @@ will be stored in memory (“cached”) and
 
 ![](./memo04.png)
 
+
+### What is stale closure ? 
+
+when a function is created inside another function, it has access to the variables of the outer function.
