@@ -18,6 +18,7 @@ export default function Login() {
     e.preventDefault();
 
     if (email && password) {
+      console.log("Logging in...");
       login(email, password);
     }
   }
@@ -34,7 +35,7 @@ export default function Login() {
   return (
     <main className={styles.login}>
       <PageNav />
-      <form className={styles.form} onSumit={handleSubmit}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.row}>
           <label htmlFor="email">Email address</label>
           <input
