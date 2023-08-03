@@ -1,12 +1,18 @@
-import { createStore } from "redux";
+import { createStore,combineReducers } from "redux";
 
-const initialState = {
+const initialStateAccount = {
   balance: 0,
   loan: 0,
   loanPurpose: "",
 };
 
-function reducer(state = initialState, action) {
+const initialStateCustomer = {
+  fullName: "",
+  nationalID: "",
+  createAt: "",
+};
+
+function accountReducer(state = initialStateAccount, action) {
   switch (action.type) {
     case "account/deposit":
       return { ...state, balance: state.balance + action.payload };
@@ -32,8 +38,35 @@ function reducer(state = initialState, action) {
   }
 }
 
+function customerReducer(state = initialStateCustomer, action) {
+  switch (action.type) {
+    case "customer/createCustomer":
+      return {
+        ...state,
+        fullName: action.payload,
+        nationalID: action.payload.nationalID,
+        createdAt: action.payload.createAt,
+      };
+
+    case "customer/updateName":
+      return {
+        ...state,
+        fullName: action.payload,
+      };
+
+    default: {
+      return state;
+    }
+  }
+}
+
+const rootReducer = combineReducers({
+  account: accountReducer,
+  customer: customerReducer,
+});
+
 // I WILL CHANGE IT SOON
-const store = createStore(reducer);
+const store = createStore(rootReducer);
 
 // store.dispatch({ type: "account/deposit", payload: 1000 });
 
@@ -56,7 +89,6 @@ const store = createStore(reducer);
 
 // console.log(store.getState());
 
-
 const ACCOUNT_DEPOSIT = "account/deposit";
 const ACCOUNT_WIDTHDRAW = "account/widthdraw";
 const ACCOUNT_REQUEST_LOAN = "account/requestLoan";
@@ -66,18 +98,17 @@ function deposit(amount) {
   return { type: ACCOUNT_DEPOSIT, payload: amount };
 }
 function widthdraw(amount) {
-    return { type: ACCOUNT_WIDTHDRAW, payload: amount}
+  return { type: ACCOUNT_WIDTHDRAW, payload: amount };
 }
-function requestLoan(amount,purpose) {
-    return {
-          type: ACCOUNT_REQUEST_LOAN,
-           payload: { amount, purpose },
-         }
+function requestLoan(amount, purpose) {
+  return {
+    type: ACCOUNT_REQUEST_LOAN,
+    payload: { amount, purpose },
+  };
 }
 function payLoan() {
-    return { type: ACCOUNT_PAY_LOAN }
+  return { type: ACCOUNT_PAY_LOAN };
 }
-
 
 store.dispatch(deposit(1000));
 console.log(store.getState());
@@ -88,3 +119,23 @@ console.log(store.getState());
 store.dispatch(payLoan());
 console.log(store.getState());
 
+// Action Creator
+
+function createCustomer(fullName, nationalID) {
+  return {
+    type: "customer/createCustomer",
+    payload: { fullName, nationalID, createAt: new Date().toISOString() },
+  };
+}
+
+function updateName(fullName) {
+  return {
+    type: "account/updateName",
+    payload: fullName,
+  };
+}
+
+store.dispatch(createCustomer("Laxman Singh", "123456789"));
+console.log(store.getState());
+store.dispatch(deposit(1000));
+console.log(store.getState());
