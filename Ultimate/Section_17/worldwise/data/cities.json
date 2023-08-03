@@ -35,6 +35,30 @@
         "lng": 13.376933665713324
       },
       "id": 98443197
+    },
+    {
+      "cityName": "Basoda",
+      "country": "India",
+      "emoji": "🇮🇳",
+      "date": "2023-08-03T02:18:47.886Z",
+      "notes": "Madhya paresh",
+      "position": {
+        "lat": "23.744208611229748",
+        "lng": "77.89306640625001"
+      },
+      "id": 98443198
+    },
+    {
+      "cityName": "Yadagirigutta",
+      "country": "India",
+      "emoji": "🇮🇳",
+      "date": "2023-08-03T02:24:11.852Z",
+      "notes": "Telangana",
+      "position": {
+        "lat": "17.65896816701371",
+        "lng": "78.96972656250001"
+      },
+      "id": 98443199
     }
   ]
 }

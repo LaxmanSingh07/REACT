@@ -16,9 +16,9 @@ function CitiesProvider({ children }) {
         setIsLoading(true);
         const res = await fetch(`${BASE_URL}/cities`);
         const data = await res.json();
-        console.log(res);
-        console.log(data);
-        setCities(data);
+        // console.log(res);
+        // console.log(data);
+        setCities(data)
       } catch {
         alert("There was an error loading data");
       } finally {
@@ -28,39 +28,60 @@ function CitiesProvider({ children }) {
     fetchCities();
   }, []);
 
-
-  async function getCity(id)
-  {
-      try {
-        setIsLoading(true);
-        const res = await fetch(`${BASE_URL}/cities/${id}`);
-        const data = await res.json();
-        setCurrentCity(data);
-      } catch {
-        alert("There was an error loading data");
-      } finally {
-        setIsLoading(false);
-      }
-  }
-    
-    return (
-        <CitiesContext.Provider
-            value={{
-                cities, isLoading,currentCity,getCity
-            }}>
-            {children}
-        </CitiesContext.Provider>
-    );
-}
-
-
-
-function useCities()
-{
-    const context = useContext(CitiesContext);
-    if (context === undefined) {
-        throw new Error("useCities must be used within a CitiesProvider");
+  async function getCity(id) {
+    try {
+      setIsLoading(true);
+      const res = await fetch(`${BASE_URL}/cities/${id}`);
+      const data = await res.json();
+      setCurrentCity(data);
+    } catch {
+      alert("There was an error loading data");
+    } finally {
+      setIsLoading(false);
     }
-    return context;
+  }
+  async function createCity(newCity) {
+    try {
+      setIsLoading(true);
+      const res = await fetch(`${BASE_URL}/cities`, {
+        //options object
+        method: "POST",
+        body: JSON.stringify(newCity),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      // console.log(data);
+      setCities(cities=>[...cities,data])
+    } catch {
+      alert("There was an error loading data");
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  return (
+    <CitiesContext.Provider
+      value={{
+        cities,
+        isLoading,
+        currentCity,
+        getCity,
+        createCity,
+      }}
+    >
+      {children}
+    </CitiesContext.Provider>
+  );
 }
-export  {CitiesProvider, useCities}
+
+function useCities() {
+  const context = useContext(CitiesContext);
+  if (context === undefined) {
+    throw new Error("useCities must be used within a CitiesProvider");
+  }
+  return context;
+}
+export { CitiesProvider, useCities };
+
