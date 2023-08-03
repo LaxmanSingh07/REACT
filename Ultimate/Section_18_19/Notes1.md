@@ -37,3 +37,8 @@ This dev tool is used to measure the performance of a React app. It can be used 
 The color of the component specifies the time it takes to render the component or the component is re-rendered or not.
 
 `The reson of the re-rendering is also shown in the flamegraph.`
+
+
+![](./memo01.png)
+
+![](./memo02.png)
