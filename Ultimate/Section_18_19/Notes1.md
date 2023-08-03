@@ -114,3 +114,18 @@ when a function is created inside another function, it has access to the variabl
 
 👉 Suspense is a new React feature that was released in React 16.6.0. It aims to help with handling async operations respectively in regard to CPU power and data fetching.
 
+## DON'T OPTIMIZE PREMATURELY
+
+
+|DO|DON'T|
+|---|---|
+✅ Find performance bottlenecks using the Profiler and visual inspection (laggy UI)|🚫 Don’t optimize prematurely!|
+✅ Fix those real performance issues|🚫 Don’t optimize anything if there is nothing to optimize...|
+✅ Memoize expensive re-renders|🚫 Don’t wrap all components in memo()|
+✅ Memoize expensive calculations|🚫Don’t wrap all values in useMemo()|
+✅ Optimize context if it has many consumers and changes often|🚫 Don’t wrap all functions in useCallback()|
+✅ Memoize context value + child components|🚫 Don’t optimize context if it’s not slow and doesn’t have many consumers|
+✅ Implement code splitting + lazy loadingfor SPA routes|
+
+
+## USEEFFECT DEPENDENCY ARRAY **RULES**
