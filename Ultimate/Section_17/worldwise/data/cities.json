@@ -1,18 +1,6 @@
 {
   "cities": [
     {
-      "cityName": "Raisen",
-      "country": "India",
-      "emoji": "🇮🇳",
-      "date": "2023-08-03T02:36:09.776Z",
-      "notes": "Good\n",
-      "position": {
-        "lat": "23.50278227921056",
-        "lng": "77.56347656250001"
-      },
-      "id": 1
-    },
-    {
       "cityName": "Delhi",
       "country": "India",
       "emoji": "🇮🇳",
@@ -23,6 +11,18 @@
         "lng": "77.21740722656251"
       },
       "id": 2
+    },
+    {
+      "cityName": "El Provencio",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2023-08-03T03:29:55.420Z",
+      "notes": "F",
+      "position": {
+        "lat": "39.34752238652522",
+        "lng": "-2.5708007812500004"
+      },
+      "id": 3
     }
   ]
 }
