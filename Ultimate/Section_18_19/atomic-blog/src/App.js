@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import { faker } from "@faker-js/faker";
 import { PostProvider, usePosts } from "./PostProvider";
 import Test from "./Test";
@@ -24,7 +24,6 @@ function App() {
   );
 
   return (
-
     <section>
       <button
         onClick={() => setIsFakeDark((isFakeDark) => !isFakeDark)}
@@ -77,7 +76,7 @@ function Results() {
   return <p>🚀 {posts.length} atomic posts found</p>;
 }
 
-function Main() {
+const Main = memo(function Main() {
   const { posts, onAddPost } = usePosts();
   return (
     <main>
@@ -85,7 +84,7 @@ function Main() {
       <Posts posts={posts} />
     </main>
   );
-}
+});
 
 function Posts() {
   const { posts } = usePosts();
@@ -130,16 +129,16 @@ function List() {
   const { posts } = usePosts();
   return (
     <>
-    <ul>
-      {posts.map((post, i) => (
-        <li key={i}>
-          <h3>{post.title}</h3>
-          <p>{post.body}</p>
-        </li>
-      ))}
+      <ul>
+        {posts.map((post, i) => (
+          <li key={i}>
+            <h3>{post.title}</h3>
+            <p>{post.body}</p>
+          </li>
+        ))}
       </ul>
       {/* <Test/> */}
-      </>
+    </>
   );
 }
 

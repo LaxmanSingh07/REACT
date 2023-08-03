@@ -95,3 +95,10 @@ will be stored in memory (“cached”) and
 ### What is stale closure ? 
 
 when a function is created inside another function, it has access to the variables of the outer function.
+
+
+## OPTIMIZATION CONTEXT RE-RENDERS
+
+1. State in the context changes all the time
+2. Context has many consumers.
+3. App is slow or laggy
