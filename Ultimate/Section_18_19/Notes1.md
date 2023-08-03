@@ -102,3 +102,15 @@ when a function is created inside another function, it has access to the variabl
 1. State in the context changes all the time
 2. Context has many consumers.
 3. App is slow or laggy
+
+
+
+## THE BUNDLE AND CODE SPLITTING 
+
+![](./bundle.png)
+
+
+### React suspense API
+
+👉 Suspense is a new React feature that was released in React 16.6.0. It aims to help with handling async operations respectively in regard to CPU power and data fetching.
+
