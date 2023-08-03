@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react";
 import { faker } from "@faker-js/faker";
 import { PostProvider, usePosts } from "./PostProvider";
+import Test from "./Test";
 
 function createRandomPost() {
   return {
@@ -128,6 +129,7 @@ function FormAddPost() {
 function List() {
   const { posts } = usePosts();
   return (
+    <>
     <ul>
       {posts.map((post, i) => (
         <li key={i}>
@@ -135,7 +137,9 @@ function List() {
           <p>{post.body}</p>
         </li>
       ))}
-    </ul>
+      </ul>
+      {/* <Test/> */}
+      </>
   );
 }
 
