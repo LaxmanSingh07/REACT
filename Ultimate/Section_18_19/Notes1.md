@@ -42,3 +42,52 @@ The color of the component specifies the time it takes to render the component o
 ![](./memo01.png)
 
 ![](./memo02.png)
+
+
+## AN ISSUE WITH MEMO : 
+
+`In React everything` is **re-created on every render** (including objects and function)
+                |
+                |
+In javascript, two objects or functions that look the same, **are actually different**. {{}!={}}
+                |
+  therefore     |
+                |
+
+If objects or functions are passed as props, the child componenet will always see them as **new props on each re-render**
+
+                |
+                |
+                |
+If props are different between ren-renders, memo will not work 
+
+                |
+                |
+                |
+
+We need to memoize objects and functions, to make them stable (preserve) between re-renders
+(memozied {} === memoized {})
+
+
+
+## TWO NEW HOOKS : USEMEMO AND USECALLBACK
+
+### useMemo and useCallback
+
+👉 Used to memoize values (**useMemo**) and 
+functions (**useCallback**) **between renders**
+
+👉 Values passed into useMemo and useCallback
+will be stored in memory (“cached”) and 
+**returned in subsequent re-renders, as long as dependencies (“inputs”) stay the same**
+
+👉 useMemo and useCallback have a 
+**dependency array** (like useEffect): whenever one **dependency changes**, the value will be re-created
+              
+
+ ⛔ **REGULAR BEHAVIOR (NO USEMEMO)**
+
+![](./memo03.png)
+
+![](./memo04.png)
+
