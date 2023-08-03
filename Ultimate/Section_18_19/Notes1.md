@@ -26,3 +26,14 @@ many optimizations by following the best practices I have been showing you ✌
 ## When Does a Component instance RE-RENDER? 
 
 ![](./WasteRender.png)
+
+
+## The Profiler Dev Tool
+
+This dev tool is used to measure the performance of a React app. It can be used to
+
+- Flamegraph: visualize how much time it takes to render each component
+
+The color of the component specifies the time it takes to render the component or the component is re-rendered or not.
+
+`The reson of the re-rendering is also shown in the flamegraph.`
