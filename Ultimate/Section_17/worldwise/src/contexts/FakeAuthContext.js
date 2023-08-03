@@ -46,9 +46,7 @@ function AuthProvider({ children }) {
         type: "login",
         payload: FAKE_USER,
       });
-    } else {
-      throw new Error("Invalid email or password");
-    }
+    } 
   }
 
   function logout() {
