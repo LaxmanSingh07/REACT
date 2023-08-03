@@ -127,5 +127,10 @@ when a function is created inside another function, it has access to the variabl
 ✅ Memoize context value + child components|🚫 Don’t optimize context if it’s not slow and doesn’t have many consumers|
 ✅ Implement code splitting + lazy loadingfor SPA routes|
 
+## Best Practices
 
-## USEEFFECT DEPENDENCY ARRAY **RULES**
+![](./USE01.png)
+
+![](./USE02.png)
+
+![](./USE03.png)
