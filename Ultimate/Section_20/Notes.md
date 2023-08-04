@@ -14,15 +14,17 @@
 
 ### what is redux?
 
-👉 3rd-party library to manage **global state** 
+👉 3rd-party library to manage **global state**
+
 👉 **Standalone** library, but easy to intergrate with React apps using **react-redux** library
+
 👉 All global state is stored in one **globally accessible store**, which is easy to update using **actions** (like useReducer)
 
 👉 It's conceptually similar to using the Context API + useReducer, but with a lot of extra features
 
 👉 Two "versions"
     1: Classic Redux (using class-based components)
-    2: Redux Toolkit (using functional components)
+    2: Modern Redux Toolkit (using functional components)
 
 
 `☝️ We need to have a really good understanding of the Context API and useReducer before we can understand Redux`
