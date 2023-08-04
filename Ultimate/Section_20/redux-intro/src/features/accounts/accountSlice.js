@@ -13,6 +13,7 @@ const accountSlice = createSlice({
   reducers: {
     deposit(state, action) {
       state.balance += action.payload;
+      state.isLoading = false;
     },
 
     withdraw(state, action) {
@@ -20,38 +21,58 @@ const accountSlice = createSlice({
     },
 
     requestLoan: {
-
       //this is a function that returns an action object  with more than one property
 
-      prepare(amount,purpose)
-      {
+      prepare(amount, purpose) {
         return {
           payload: {
             amount,
-            purpose
-          }
-        }
+            purpose,
+          },
+        };
       },
 
       reducer(state, action) {
-      if (state.loan > 0) return;
-      state.loan = action.payload.amount;
-      state.loanPurpose = action.payload.purpose;
-      state.balance += action.payload.amount;
+        if (state.loan > 0) return;
+        state.loan = action.payload.amount;
+        state.loanPurpose = action.payload.purpose;
+        state.balance += action.payload.amount;
+      },
     },
-  },
-    payLoan(state, action) {
+    payLoan(state) {
       state.balance -= state.loan;
       state.loan = 0;
       state.loanPurpose = "";
     },
+    convertingCurrency(state) {
+      state.isLoading = true;
+    },
   },
 });
 
+export const { withdraw, requestLoan, payLoan } = accountSlice.actions;
 
-console.log(accountSlice);
+export function deposit(amount, currency) {
+  if (currency === "USD") {
+    return { type: "account/deposit", payload: amount };
+  }
+  return async function (dispatch, getState) {
+    dispatch({ type: "account/convertingCurrency" });
 
-export const { deposit, withdraw, requestLoan, payLoan } = accountSlice.actions;
+    //1. api call
+    const host = "api.frankfurter.app";
+    const res = await fetch(
+      `https://${host}/latest?amount=${amount}&from=${currency}&to=USD`
+    );
+
+    const data = await res.json();
+    const convertedAmount = data.rates.USD;
+
+    // return;
+
+    dispatch({ type: "account/deposit", payload: convertedAmount });
+  };
+}
 
 export default accountSlice.reducer;
 
