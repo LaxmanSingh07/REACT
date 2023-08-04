@@ -44,3 +44,10 @@
 3 Some apps do require Redux (or a similar library)
 
 ![](./image2.png)
+
+
+## WHAT IS REDUX **MIDDLEWARE** ?
+
+![](./mid01.png)
+
+![](./mid02.png)
