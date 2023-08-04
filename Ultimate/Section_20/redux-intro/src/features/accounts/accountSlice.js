@@ -57,7 +57,7 @@ export function deposit(amount, currency) {
 
     //1. api call
     const host = "api.frankfurter.app";
-    const res = fetch(
+    const res = await fetch(
       `https://${host}/latest?amount=${amount}&from=${currency}&to=USD`
     );
 
