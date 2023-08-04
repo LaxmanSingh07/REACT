@@ -76,3 +76,8 @@
 3. **Automatic** setup of thunk middleware and DevTools
 
 
+## CONTEXT API VS REDUX
+
+![](./reduxvscontext02.png);
+
+![](./reduxvscontext.png);
