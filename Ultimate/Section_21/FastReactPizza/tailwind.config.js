@@ -1,12 +1,20 @@
 /** @type {import('tailwindcss').Config} */
+
+/*eslint-disable */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    fontFamily: {
+      sans: 'Roboto Mono,monospace',
+    },
+    extend: {
+      colors: {
+        pizza: '#123456',
+      },
+      fontSize: {},
+      height: {},
+    },
   },
   plugins: [],
-}
+};
 
