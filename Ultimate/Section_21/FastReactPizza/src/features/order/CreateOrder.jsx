@@ -74,7 +74,9 @@ function CreateOrder() {
         </div>
 
         <div>
-          <Button disabled={false}>Order now</Button>
+          <Button disabled={false} type="primary">
+            Order now
+          </Button>
         </div>
       </Form>
     </div>
