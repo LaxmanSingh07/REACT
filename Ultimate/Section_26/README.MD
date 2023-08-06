@@ -10,4 +10,5 @@
 
 👉 Perfect to get up and running **quickly!**
 
-👉 Not just an API: Supabase also comes with easyto-use **user authentication** and **file storage**
+👉 Not just an API: Supabase also comes with easy to-use **user authentication** and **file storage**
+
